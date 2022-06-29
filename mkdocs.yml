@@ -1,0 +1,38 @@
+site_name: Superinsight Documentation 
+site_url: https://docs.superinsight.ai
+theme:
+  name: material
+  logo: assets/images/superinsight/logo_white.png
+  palette:
+    primary: red
+nav:
+    - What is Superinsight : what_is_superinsight.md
+    - Quickstart: index.md
+    - Setup: 
+      - ML Database: setup/database.md
+      - ML Table: setup/table.md
+    - SQL API: 
+      - Querying: sql/querying.md
+    - Sign Up: signup.md
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - tables
+
+plugins:
+  - i18n:
+      default_language: en
+      languages:
+        en:
+          name: English
+          build: true
+        zh_CN:
+          name: 中文 (中国)
+          build: true
+        zh_TW:
+          name: 中文 (台灣)
+          build: true
