@@ -1,0 +1,665 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.superinsight.ai/zh_CN/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
+    
+    
+      
+        <title>Quickstart - Superinsight Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quickstart" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="./" title="Superinsight Documentation" class="md-header__button md-logo" aria-label="Superinsight Documentation" data-md-component="logo">
+      
+  <img src="../assets/images/superinsight/logo_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Superinsight Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Quickstart
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="Select language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="../" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="./" hreflang="zh_CN" class="md-select__link">
+                    中文 (中国)
+                  </a>
+                </li>
+                
+                <li class="md-select__item">
+                  <a href="../zh_TW/" hreflang="zh_TW" class="md-select__link">
+                    中文 (台灣)
+                  </a>
+                </li>
+                
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./" title="Superinsight Documentation" class="md-nav__button md-logo" aria-label="Superinsight Documentation" data-md-component="logo">
+      
+  <img src="../assets/images/superinsight/logo_white.png" alt="logo">
+
+    </a>
+    Superinsight Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="what_is_superinsight/" class="md-nav__link">
+        What is Superinsight
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Quickstart
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Quickstart
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-connect-to-your-host" class="md-nav__link">
+    1. Connect to your host
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-attach-an-existing-databases" class="md-nav__link">
+    2. Attach an existing databases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-querying-data-from-existing-database" class="md-nav__link">
+    3. Querying data from existing database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-ml-database-in-superinisght" class="md-nav__link">
+    4. Create a ML database in Superinisght
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-create-a-ml-table-from-existing-data" class="md-nav__link">
+    5. Create a ML table from existing data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-predicting-data-from-ml-table" class="md-nav__link">
+    6. Predicting data from ML table
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Setup" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="setup/database/" class="md-nav__link">
+        ML Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="setup/table/" class="md-nav__link">
+        ML Table
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          SQL API
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="SQL API" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          SQL API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sql/querying/" class="md-nav__link">
+        Querying
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signup/" class="md-nav__link">
+        Sign Up
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-connect-to-your-host" class="md-nav__link">
+    1. Connect to your host
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-attach-an-existing-databases" class="md-nav__link">
+    2. Attach an existing databases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-querying-data-from-existing-database" class="md-nav__link">
+    3. Querying data from existing database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-ml-database-in-superinisght" class="md-nav__link">
+    4. Create a ML database in Superinisght
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-create-a-ml-table-from-existing-data" class="md-nav__link">
+    5. Create a ML table from existing data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-predicting-data-from-ml-table" class="md-nav__link">
+    6. Predicting data from ML table
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="quickstart">Quickstart</h1>
+<p>This is a quickstart guide on how to use Superinsight ML database to get ML predictions using SQL query.
+You will learn how to connect to your existing database table and populate data into your new ML table.
+Finally you will be able to run ML predictions using SQL query. It's that simple.
+If you don't have an account yet, please <a href="signup">sign up for a free trial</a> so we can get you started.</p>
+<h2 id="1-connect-to-your-host">1. Connect to your host</h2>
+<p>After your account has been created, you will find a dedicated host on your Superinsight Cloud Studio.
+Using this host, you will be able to connect to existing databases and create ML databases.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Superinsight Cloud Studio</label><label for="__tabbed_1_2">Third Party Tools</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>If you are using Superinsight Cloud Studio, your host should be already connected to your account. Simply login and click on SQL Editor to begin.</p>
+</div>
+<div class="tabbed-block">
+<p>If you wish to connect to your host using other tools such DBeaver or Superset, you can use the trino jdbc protocols.
+Note that most third party tools only support <code>SELECT</code> commands. For complete full features, we recommend using Superinsight Cloud Studio.
+<div class="highlight"><pre><span></span><code>jdbc:trino://username:password@yourhost.superinsight.io:8080
+</code></pre></div></p>
+</div>
+</div>
+</div>
+<h2 id="2-attach-an-existing-databases">2. Attach an existing databases</h2>
+<p>Click on the <code>[Attach Database]</code> button and connect using your database connection. You can also use our demo database connection string below and use the name <code>demo_db</code>.
+<div class="highlight"><pre><span></span><code>postgresql://demo_user:demo_password@demo_db.superinsight.dev/demo
+</code></pre></div>
+If you like to attach your existing database, see the list of our <a href="setup/database">Supported Databases</a> and their connection strings.</p>
+<h2 id="3-querying-data-from-existing-database">3. Querying data from existing database</h2>
+<p>After connecting to a database you execute a standard <code>SELECT</code> statement to retrieve and should see the following results</p>
+<div class="highlight"><pre><span></span><code>SELECT * 
+FROM demo_db.my_database.movie_reviews
+LIMIT 3;
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>movie_id</th>
+<th>review</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>This is the worst movie I ever saw because the plot is horrible</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>The story has no point, the main character was too weak</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>This movie is awesome, it is probably the best movie of the year</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-create-a-ml-database-in-superinisght">4. Create a ML database in Superinisght</h2>
+<p>Click on the <code>[Create Database]</code> button to create a new ML database and name it <code>my_mldb</code>.
+The biggest difference between a traditional database table and a Superinsight ML database table is that in ML tables are indexed in a way that allows you to make ML predictions using SQL query.</p>
+<h2 id="5-create-a-ml-table-from-existing-data">5. Create a ML table from existing data</h2>
+<div class="highlight"><pre><span></span><code>CREATE TABLE superinsight.my_mldb.movie_reviews
+  AS (SELECT id, review
+      FROM demo_db.my_database.movie_reviews
+      WHERE movie_id &lt; 3);
+</code></pre></div>
+<h2 id="6-predicting-data-from-ml-table">6. Predicting data from ML table</h2>
+<p>After moving data to your ML table, you execute a standard <code>SELECT</code> statement to predict data
+<div class="highlight"><pre><span></span><code>SELECT * 
+FROM superinsight.my_mldb.movie_reviews
+WHERE review = &#39;%rating for the movie was great%&#39;
+LIMIT 3;
+</code></pre></div></p>
+<p>You should see the following results</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>review</th>
+<th>_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>This movie is awesome, it is probably the best movie of the year</td>
+<td>0.72</td>
+</tr>
+<tr>
+<td>2</td>
+<td>The story has no point, the main character was too weak</td>
+<td>0.28</td>
+</tr>
+<tr>
+<td>1</td>
+<td>This is the worst movie I ever saw because the plot is horrible</td>
+<td>0.19</td>
+</tr>
+</tbody>
+</table>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="what_is_superinsight/" class="md-footer__link md-footer__link--prev" aria-label="Previous: What is Superinsight" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              What is Superinsight
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="setup/database/" class="md-footer__link md-footer__link--next" aria-label="Next: ML Database" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              ML Database
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.0238f547.min.js"></script>
+      
+    
+  </body>
+</html>
