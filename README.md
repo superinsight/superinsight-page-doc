@@ -1,6 +1,10 @@
 # superinsight-page-doc
 Documentation for Superinsight
 
+### Develop
+```
+mkdocs serve
+```
 
 ### Build and Deploy
 ```
