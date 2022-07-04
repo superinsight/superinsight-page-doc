@@ -1,0 +1,5 @@
+mkdocs
+mkdocs-material
+mkdocs-foo-plugin
+mkdocs-i18n
+mkdocs-static-i18n

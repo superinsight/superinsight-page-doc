@@ -1,6 +1,6 @@
 
 ## SQL Query with ML predictions
-ML tables are setup in a way that it allows you to query data using traditional SQL statement, and also make ML predictions using SQL
+ML tables are setup in a way that it allows you to perform semantic search using traditional SQL statement
 
 ## Traditional Query
 
@@ -20,9 +20,9 @@ WHERE review like '%good%'
 
 
 
-## ML Query
+## Query with Semantic Search
 
-Instead, you should use ML prediction by running ML query which will give you a much more accurate results and also sort by relevance score.
+Using ML datbase to perform semantic search is easy, just use SQL query to search your ML table and you will you get a much more accurate results with relevance score as part of the result set
 ```
 SELECT * 
 FROM superinsight.my_mldb.movie_reviews

@@ -49,7 +49,7 @@ LIMIT 3;
 | 3             | 2           | This movie is awesome, it is probably the best movie of the year |
 
 
-## 4. Create a ML database in Superinisght
+## 4. Create a ML database in Superinsight
 
 Click on the `[Create Database]` button to create a new ML database and name it `my_mldb`.
 The biggest difference between a traditional database table and a Superinsight ML database table is that in ML tables are indexed in a way that allows you to make ML predictions using SQL query.
@@ -64,9 +64,9 @@ CREATE TABLE superinsight.my_mldb.movie_reviews
 ```
 
 
-## 6. Predicting data from ML table
+## 6. Performing semantic search on ML table
 
-After moving data to your ML table, you execute a standard `SELECT` statement to predict data
+After moving data to your ML table, you execute a standard `SELECT` statement to perform semantic search
 ```
 SELECT * 
 FROM superinsight.my_mldb.movie_reviews

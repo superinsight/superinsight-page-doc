@@ -6,8 +6,8 @@ theme:
   palette:
     primary: red
 nav:
-    - What is Superinsight : what.md
-    - Quickstart: index.md
+    - What is Superinsight : index.md
+    - Quickstart: quickstart.md
     - Setup: 
       - ML Database: setup/database.md
       - ML Table: setup/table.md
