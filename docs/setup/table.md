@@ -1,7 +1,7 @@
 
 ## What is ML table
 ML table are database tables that are optimize for ML predictions. Traditional SQL tables store datatypes such as `STRING`, `NUMBER` and `DATETIME`, which works fine for simple data retrieval.
-However, for ML predictions we need more complex datatype such as `EMBEDDINGS`. ML table not only store traditional datatypes, it also convert and index them as `EMBEDDINGS` in such a way that they can be use for ML predictions using SQL query.
+However, for ML operations are done using more complex datatype such as `EMBEDDINGS`. ML table not only store traditional datatypes, it also convert and index them as `EMBEDDINGS` in so the data are ready for ML operations.
 
 ## Working a ML table
 Working with ML table is easy in Superinsight, just use the same SQL sytnax you would use for other SQL databases

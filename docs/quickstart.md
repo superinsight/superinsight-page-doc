@@ -1,7 +1,7 @@
 # Quickstart
-This is a quickstart guide on how to use Superinsight ML database to get ML predictions using SQL query.
+This is a quickstart guide on how to use Superinsight ML database to perform ML operations using SQL query.
 You will learn how to connect to your existing database table and populate data into your new ML table.
-Finally you will be able to run ML predictions using SQL query. It's that simple.
+Finally you will be able to run a semantic search using SQL query. It's that simple.
 If you don't have an account yet, please [sign up for a free trial](signup) so we can get you started.
 
 
@@ -18,7 +18,7 @@ Using this host, you will be able to connect to existing databases and create ML
     If you wish to connect to your host using other tools such DBeaver or Superset, you can use the trino jdbc protocols.
     Note that most third party tools only support `SELECT` commands. For complete full features, we recommend using Superinsight Cloud Studio.
     ```
-    jdbc:trino://username:password@yourhost.superinsight.io:8080
+    jdbc:trino://username:password@yourhost.superinsight.dev:8080
     ```
 
 ## 2. Attach an existing databases
@@ -27,7 +27,7 @@ Click on the `[Attach Database]` button and connect using your database connecti
 ```
 postgresql://demo_user:demo_password@demo_db.superinsight.dev/demo
 ```
-If you like to attach your existing database, see the list of our [Supported Databases](setup/database) and their connection strings.
+If you like to attach your existing database, see the list of our [Supported Databases](/setup/database) and their connection strings.
 
 
 
@@ -52,7 +52,7 @@ LIMIT 3;
 ## 4. Create a ML database in Superinsight
 
 Click on the `[Create Database]` button to create a new ML database and name it `my_mldb`.
-The biggest difference between a traditional database table and a Superinsight ML database table is that in ML tables are indexed in a way that allows you to make ML predictions using SQL query.
+The biggest difference between a traditional database table and a Superinsight ML database table is that in ML tables are indexed in a way that allows you to perform semantic search using SQL query.
 
 ## 5. Create a ML table from existing data
 

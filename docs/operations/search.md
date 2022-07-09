@@ -1,8 +1,8 @@
 
-## SQL Query with ML predictions
+## Semantic Search 
 ML tables are setup in a way that it allows you to perform semantic search using traditional SQL statement
 
-## Traditional Query
+## Why traditional database query would fail
 
 Let's say you want to find positive movie reviews, and you run the following query 
 ```
@@ -20,7 +20,7 @@ WHERE review like '%good%'
 
 
 
-## Query with Semantic Search
+## How semantic search in ML database will succeed
 
 Using ML datbase to perform semantic search is easy, just use SQL query to search your ML table and you will you get a much more accurate results with relevance score as part of the result set
 ```
@@ -31,7 +31,7 @@ AND _score > 0.5
 ```
 
 !!! success "Success"
-    ML query is able to give you a much more accurate results because it does not rely on keyword matching, instead it uses our build in ML models for inference.
+    ML tables index data as `EMBEDDINGS`, which allows this search query to perform a semantic search on existing data in the table.
 
     | id            | review                                                                | _score    |
     | -----------   | -----------------------------------------------                       | --------- |

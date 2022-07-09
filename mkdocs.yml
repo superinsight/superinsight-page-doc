@@ -11,8 +11,10 @@ nav:
     - Setup: 
       - ML Database: setup/database.md
       - ML Table: setup/table.md
-    - SQL API: 
-      - Querying: sql/querying.md
+    - Operations:
+      - Search: operations/search.md
+      - Predict: operations/predict.md
+      - Train: operations/train.md
     - Sign Up: signup.md
 markdown_extensions:
   - attr_list
