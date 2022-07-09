@@ -1,0 +1,743 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.superinsight.ai/operations/predict/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Predict - Superinsight Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#predict-with-pretrained-models" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Superinsight Documentation" class="md-header__button md-logo" aria-label="Superinsight Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/superinsight/logo_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Superinsight Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Predict
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Superinsight Documentation" class="md-nav__button md-logo" aria-label="Superinsight Documentation" data-md-component="logo">
+      
+  <img src="../../assets/images/superinsight/logo_white.png" alt="logo">
+
+    </a>
+    Superinsight Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        What is Superinsight
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        Quickstart
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Setup
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Setup" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/database/" class="md-nav__link">
+        ML Database
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/table/" class="md-nav__link">
+        ML Table
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Operations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Operations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Operations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../search/" class="md-nav__link">
+        Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Predict
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Predict
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-with-pretrained-models" class="md-nav__link">
+    Predict with pretrained models
+  </a>
+  
+    <nav class="md-nav" aria-label="Predict with pretrained models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-classification" class="md-nav__link">
+    Text Classification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-answering" class="md-nav__link">
+    Question Answering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summarization" class="md-nav__link">
+    Summarization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-generation" class="md-nav__link">
+    Text Generation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation" class="md-nav__link">
+    Translation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../train/" class="md-nav__link">
+        Train
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../signup/" class="md-nav__link">
+        Sign Up
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#predict-with-pretrained-models" class="md-nav__link">
+    Predict with pretrained models
+  </a>
+  
+    <nav class="md-nav" aria-label="Predict with pretrained models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#text-classification" class="md-nav__link">
+    Text Classification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-answering" class="md-nav__link">
+    Question Answering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summarization" class="md-nav__link">
+    Summarization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-generation" class="md-nav__link">
+    Text Generation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translation" class="md-nav__link">
+    Translation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Predict</h1>
+
+<h2 id="predict-with-pretrained-models">Predict with pretrained models</h2>
+<p>To make a prediction, you can simply use pretrained ML model by simply utilizing as a table under the model schema. By default ML database comes with the following ML models </p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Description</th>
+<th>Model Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text Classification</td>
+<td>Use to assign label or class to text, labels such as sentiment or product category</td>
+<td>model.text_classification</td>
+</tr>
+<tr>
+<td>Question Answering</td>
+<td>Use to find answers in a large amount of text</td>
+<td>model.question_answering</td>
+</tr>
+<tr>
+<td>Summarization</td>
+<td>Use to summarize a large amount of text to a short description</td>
+<td>model.summarization</td>
+</tr>
+<tr>
+<td>Text Generation</td>
+<td>Use to generate text from a preceding example</td>
+<td>model.text_generation</td>
+</tr>
+<tr>
+<td>Translation</td>
+<td>Use for translating one language to another, for example English to French</td>
+<td>model.translation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-classification">Text Classification</h3>
+<p>Text classification can be use to generate labels from text. For example, let's say you want to determine if movie reviews are positive or negative, and you run the following query 
+<div class="highlight"><pre><span></span><code>SELECT movie.id, movie.movie_id, movie.review, m.labels, m.positive_score, m.negative_score
+FROM demo_db.my_database.movie_reviews as movie
+JOIN demo_db.model.text_classification as m 
+WHERE m.labels = &#39;positive, negative&#39;
+AND movie.movie_id &gt; 2;
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>movie_id</th>
+<th>review</th>
+<th>labels</th>
+<th>positive_score</th>
+<th>negative_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>This movie is awesome, it is probably the best movie of the year</td>
+<td>positive, negative</td>
+<td>0.9951</td>
+<td>0.0049</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>This is the worst movie I ever saw, it's not good</td>
+<td>positive, negative</td>
+<td>0.0022</td>
+<td>0.9978</td>
+</tr>
+</tbody>
+</table>
+<h3 id="question-answering">Question Answering</h3>
+<p>Question answering can be use to find answers from text. For example, let's say you have the description of a movie and you need to find the main character, you can use question answering model to determine that for you.
+<div class="highlight"><pre><span></span><code>SELECT movie.movie_id, movie.description, m.answer, m._score 
+FROM demo_db.my_database.movie as movie
+JOIN demo_db.model.question_answering m
+WHERE m.question = &#39;Who is the main character of the movie&#39;
+AND movie.movie_id = 8;
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>movie_id</th>
+<th>movie</th>
+<th>answer</th>
+<th>_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>After more than thirty years of service as one of the Navy’s top aviators, Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. When he finds himself training a detachment of Top Gun graduates for a specialized mission the likes of which no living pilot has ever seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: “Rooster,” the son of Maverick’s late friend and Radar Intercept Officer Lt. Nick Bradshaw, aka “Goose”. Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it.</td>
+<td>Pete “Maverick” Mitchell</td>
+<td>0.5555</td>
+</tr>
+</tbody>
+</table>
+<h3 id="summarization">Summarization</h3>
+<p>Summarization can be use to summarize long text to a shorter summary. For example, let's say you need to summary a movie into a short summary, you can use the summarization model to do that for you.
+<div class="highlight"><pre><span></span><code>SELECT movie.movie_id, movie.description, m.summary
+FROM demo_db.my_database.movie as movie
+JOIN demo_db.model.summarization m
+WHERE movie.movie_id = 8;
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>movie_id</th>
+<th>description</th>
+<th>summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>After more than thirty years of service as one of the Navy’s top aviators, Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. When he finds himself training a detachment of Top Gun graduates for a specialized mission the likes of which no living pilot has ever seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: “Rooster,” the son of Maverick’s late friend and Radar Intercept Officer Lt. Nick Bradshaw, aka “Goose”. Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it.</td>
+<td>Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot. Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-generation">Text Generation</h3>
+<p>Text generation model can be use to create text to get insights from existing data. For example , let's say you have the description of the movie and you will like to find out what type of audiences are best for the movie. To generate new text, you can submit a prompt to the text generation model. In the following example, we take the summary of the movie and append the text <code>What type of audience will like movie? This movie is best for people who like</code> to encourage the model to give us the answer we are looking for.
+<div class="highlight"><pre><span></span><code>SELECT movie.movie_id, m.prompt, m.text
+FROM demo_db.my_database.movie as movie
+JOIN demo_db.model.text_generation m
+WHERE m.prompt = movie.summary + &#39;What type of audience will like movie? This movie is best for people who like&#39;
+WHERE movie.movie_id = 8;
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>movie_id</th>
+<th>prompt</th>
+<th>text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot. Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it. <code>What type of audience will like movie? This movie is best for people who like</code></td>
+<td>drama and action movies</td>
+</tr>
+</tbody>
+</table>
+<h3 id="translation">Translation</h3>
+<p>Translation model can be use to translate text from one language to another
+<div class="highlight"><pre><span></span><code>SELECT movie.movie_id, movie.description, m.target
+FROM demo_db.my_database.movie as movie
+JOIN demo_db.model.translation m
+WHERE m.source = m.description and m.source_language = &#39;en_XX&#39; and m.target_language = &#39;fr_XX&#39;
+AND movie.movie_id = 8;
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>movie_id</th>
+<th>description</th>
+<th>target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>After more than thirty years of service as one of the Navy’s top aviators, Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. When he finds himself training a detachment of Top Gun graduates for a specialized mission the likes of which no living pilot has ever seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: “Rooster,” the son of Maverick’s late friend and Radar Intercept Officer Lt. Nick Bradshaw, aka “Goose”. Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it.</td>
+<td>Après plus de trente ans de service en tant que l'un des meilleurs aviateurs de la Marine, Pete "Maverick" Mitchell (Tom Cruise) est à sa place, repoussant les limites en tant que pilote d'essai courageux et esquivant l'avancement de grade qui le mettrait à la terre. Lorsqu'il se retrouve à former un détachement de diplômés de Top Gun pour une mission spécialisée comme aucun pilote vivant n'a jamais vu, Maverick rencontre le lieutenant Bradley Bradshaw (Miles Teller), indicatif d'appel : "Rooster", le fils du défunt ami de Maverick et l'officier d'interception radar, le lieutenant Nick Bradshaw, alias "Goose". Confronté à un avenir incertain et confronté aux fantômes de son passé, Maverick est entraîné dans une confrontation avec ses propres peurs les plus profondes, aboutissant à une mission qui exige le sacrifice ultime de ceux qui seront choisis pour la piloter.</td>
+</tr>
+</tbody>
+</table>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../search/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Search" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Search
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../train/" class="md-footer__link md-footer__link--next" aria-label="Next: Train" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Train
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

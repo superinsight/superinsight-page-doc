@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-does-machine-learning-database-provide" class="md-skip">
+        <a href="#what-does-it-do" class="md-skip">
           Skip to content
         </a>
       
@@ -180,11 +180,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-does-machine-learning-database-provide" class="md-nav__link">
-    What does Machine Learning Database provide?
+  <a href="#what-does-it-do" class="md-nav__link">
+    What does it do
   </a>
   
-    <nav class="md-nav" aria-label="What does Machine Learning Database provide?">
+    <nav class="md-nav" aria-label="What does it do">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -195,15 +195,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-inference" class="md-nav__link">
-    2. Inference
+  <a href="#2-model-prediction" class="md-nav__link">
+    2. Model Prediction
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-training" class="md-nav__link">
-    3. Training
+  <a href="#3-model-training" class="md-nav__link">
+    3. Model Training
   </a>
   
 </li>
@@ -222,10 +222,10 @@
       
         <li class="md-nav__item">
   <a href="#who-is-it-for" class="md-nav__link">
-    Who is it for?
+    Who is it for
   </a>
   
-    <nav class="md-nav" aria-label="Who is it for?">
+    <nav class="md-nav" aria-label="Who is it for">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -356,14 +356,14 @@
       
       
         <label class="md-nav__link" for="__nav_4">
-          SQL API
+          Operations
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="SQL API" data-md-level="1">
+      <nav class="md-nav" aria-label="Operations" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          SQL API
+          Operations
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -373,8 +373,36 @@
   
   
     <li class="md-nav__item">
-      <a href="sql/querying/" class="md-nav__link">
-        Querying
+      <a href="operations/search/" class="md-nav__link">
+        Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="operations/predict/" class="md-nav__link">
+        Predict
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="operations/train/" class="md-nav__link">
+        Train
       </a>
     </li>
   
@@ -427,11 +455,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-does-machine-learning-database-provide" class="md-nav__link">
-    What does Machine Learning Database provide?
+  <a href="#what-does-it-do" class="md-nav__link">
+    What does it do
   </a>
   
-    <nav class="md-nav" aria-label="What does Machine Learning Database provide?">
+    <nav class="md-nav" aria-label="What does it do">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -442,15 +470,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-inference" class="md-nav__link">
-    2. Inference
+  <a href="#2-model-prediction" class="md-nav__link">
+    2. Model Prediction
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-training" class="md-nav__link">
-    3. Training
+  <a href="#3-model-training" class="md-nav__link">
+    3. Model Training
   </a>
   
 </li>
@@ -469,10 +497,10 @@
       
         <li class="md-nav__item">
   <a href="#who-is-it-for" class="md-nav__link">
-    Who is it for?
+    Who is it for
   </a>
   
-    <nav class="md-nav" aria-label="Who is it for?">
+    <nav class="md-nav" aria-label="Who is it for">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -517,28 +545,29 @@
 
   <h1>What is Superinsight</h1>
 
-<p>Superinsight is a Machine Learning Database.
-Traditional database are execellent at searching data types such as text and numbers, however it does not support for machine learning. Data is the most crucial part of machine learning, but because traditional databases do not support machine learning operations, for any ML operations today, data need to move outside the database for training, inference and search, it made machine learning a lot more difficult that it has to be. Also the tools we use today for machine learning such as Pytorch and Tensorflow are made for data scientist and ML engineers, these are not tools that developers and database administrators are familar with. We think the better approach to this problem is to redesign the process by keeping all the machine learning operations inside the database where the data is. </p>
-<h2 id="what-does-machine-learning-database-provide">What does Machine Learning Database provide?</h2>
+<p>Superinsight is a Machine Learning SQL Database, its main purpose is to provide machine learning features within the database so any applications and business intelligence software that utliize SQL can take advantage of AI capabilities.</p>
+<p>Traditional database are execellent at searching data types such as text and numbers, however there are no support for machine learning operations. Data is the most crucial part of machine learning, but because traditional databases do not support machine learning operations, data need to move outside the database for training, prediction and search, this made machine learning a lot more difficult that it has to be.</p>
+<p>Also the tools build for machine learning are made for AI researchers and data scientists, and not developers. We think the better approach to this problem is utilize the database as an abstraction layer for machine learning, and enable developers to build AI enabled applications at scale.</p>
+<h2 id="what-does-it-do">What does it do</h2>
 <h3 id="1-semantic-search">1. Semantic Search</h3>
-<p>Traditional database tables only allow users to search text and numbers using keyword matching or full text search. By default, machine learning database tables store text as embeddings, making it easy for users to perfrom semantic search with simple SQL statement.</p>
-<h3 id="2-inference">2. Inference</h3>
-<p>Machine learning database has build in ML models that allow users to make inference as part of the database operations. Common ML operations such as classification, summarization, text generation and translation are available by default for users to make inference on these models with their data. Inference can also be perform using simple SQL statement.</p>
-<h3 id="3-training">3. Training</h3>
-<p>Machine learning database not only provide default models, it also allow users to use their existing data to train or finetuned ML models. Training models can also be perform using simple SQL statment.</p>
+<p>Traditional database tables only allow users to search text and numbers using keyword matching or full text search. By default, machine learning database tables store text and image as embeddings, making it easy for users to perfrom semantic search with simple SQL statement.</p>
+<h3 id="2-model-prediction">2. Model Prediction</h3>
+<p>Machine learning database has build in ML models that allow users to make predictions similiar database functions in traditional database. Common ML downstream tasks such as classification, summarization, text generation and translation are available by default for users to make predictions using SQL query inside the database.</p>
+<h3 id="3-model-training">3. Model Training</h3>
+<p>Machine learning database also provide the ability to train models from scratch or using a pretrained model with data in the database. Training models can also be perform using simple SQL statment.</p>
 <h3 id="4-federated-query">4. Federated Query</h3>
-<p>It is very common that the data you need for your ML operations are located from other external data sources. Superinsight ML database also come with the Federated Query feature, which will allow you to query data from multiple data sources using one sql query. This will elimiate the need of building out a ETL pipeline, which takes a lot of time and the possiblity of data inconsistency.</p>
-<h2 id="who-is-it-for">Who is it for?</h2>
-<p>The purpose of Superinsight is to accelerate the adoption of AI for every organization in the world by empowering organization domain experts to utilize AI using their existing skills and tools. While there are many different types of domain experts in each organization, Superinsight is made for data experts, business experts and application experts.</p>
+<p>It is very common that the data you need for your ML operations are located at another data sources. Superinsight ML database also come with the Federated Query feature, which will allow you to query data from multiple data sources using one sql query. This will elimiate the need of building out a ETL pipeline, which takes a lot of time and the possiblity of data inconsistency.</p>
+<h2 id="who-is-it-for">Who is it for</h2>
+<p>The purpose of Superinsight is to accelerate the adoption of AI for every organization in the world by empowering organization domain experts to utilize AI using their existing skills and tools. While there are many different types of domain experts in each organization, Superinsight is made for data experts, business experts and developers.</p>
 <h3 id="1-data-experts">1. Data Experts</h3>
-<p>Data experts are usually people in the organization who are database admins, database developers or those who understand and has access to the data. We all know that data is the most critial part of AI, and data experts have the most knowledge of where the data is and how data are being structured within the organization. Today one of the main reason organizations are being held back on AI adoption is because the tools that we use for machine learning such as PyTorch and Tensorflow are made of AI researchers and ML engineers. Most data experts do not come from a machine learning background, and most organizations do not have a team of AI researchers and ML engineers who understand the data structure as well as the data experts. To overcome this barrier, we must enable data experts to use their existing skills to perform AI functions. SQL has been and still is the most dominant tools data experts. If we enable data experts to use SQL to query data across different data sources and empower them to train models, inference models, generate and store data without becoming a machine learning experts, then data experts will be able to ignite AI adoptions across the entire organization.</p>
+<p>Data experts are usually people in the organization who are database admins, database developers or those who understand and has access to the data. We all know that data is the most critial part of AI, and data experts have the most knowledge of where the data is and how data are being structured within the organization. Today one of the main reason organizations are being held back on AI adoption is because the tools that we use for machine learning are made of AI researchers and ML engineers. Most data experts usually come from database background and not machine learning background, also most organizations do not have a team of AI researchers and ML engineers who understand the data structure as well as the data experts. To overcome this barrier, we must enable data experts to use their existing skills to perform AI functions. SQL has been and still is the most dominant tools data experts. If we enable data experts to use SQL to query data across different data sources and empower them to train models, make predictions , generate and store data without becoming a machine learning experts, then data experts will be able to ignite AI adoptions across the entire organization.</p>
 <p>Superinsight has created the concept of a ML database. Just like a traditional database that is use to store and retrieve the typical datatypes, ML database will also index data in such a way that it can be used for AI functions. Superinsight also provide a SQL query engine that will help data experts to transform data from existing databases to ML database. Data experts will be able to use SQL to run ML predictions by query data from ML tables and joining data from other data sources such as SQL or NoSQL databases in a single SQL statement. Superinsight will empower data experts to provide the foundation they need to help their organization adopt AI.</p>
 <h3 id="2-business-experts">2. Business Experts</h3>
-<p>Business experts are usually people in the organization who are executives, business analysts, sales, marketers or those who need to get insights from the data within the organization. We all know that main benefit of AI is to be able to perform human like judgement at scale. Another main reason organizations are being held back on AI adoption is because the tools that we use to get AI insights such as Python, R, Jupyter Notebooks, MATLAB and Scikit-learn are made of data scientists. Even though in recent years, there is a huge movement to train more data scientists, the barrier to entry is still too high. Most business experts are not equipped with skills of a data scientist, and most data scientists are not easier to hire or train. To overcome this barrier, we must enable business experts to use their existing skills to get AI insights.</p>
-<p>Today most business experts use data visualization tools such as Tableau, Power BI, Sisense and Superset to get insights from their data, and most of these BI tools use SQL for data retrieval. Since Superinsight provides a SQL Query Engine can be use to make ML predictions, business experts can use it to connect their existing BI tools.  With this new approach, business experts will get AI insights in real time and be more informed about their business so they make better decisions faster.</p>
+<p>Business experts are usually people in the organization who are executives, business analysts, sales, marketers or those who need to get insights from the data within the organization. We all know that main benefit of AI is to be able to perform human like judgement at scale. The main reason organizations are being held back on AI adoption is because the tools that we use to get AI insights such as made of data scientists, who are usually not the business experts in the organization. To overcome this barrier, we must enable business experts to use their existing skills to get AI insights.</p>
+<p>Today most business experts use data visualization tools such as Tableau, Power BI, Sisense and Superset to get insights from their data, and most of these BI tools use SQL for data retrieval. Since Superinsight ML database runs on SQL, business experts can use it to connect their existing BI tools just like another existing database.  With this new approach, business experts will get AI insights from Supeinsight ML Database and be more informed about their business so they make better decisions faster.</p>
 <h3 id="3-developers">3. Developers</h3>
-<p>Developers are the people who build applications for people inside and outside the organization. Application is the main component that is use for capturing real world information and store them as data. Every developer would love to build applications with AI capabilities, but most of them are being held back because most of the tools used in machine learning development such as Pytorch and Tensorflow are made for ML engineers. Most organizations do not have ML engineers as part of the development team, and ML engineers are hard to hire and train. To overcome this barrier, we must enable developers to incorporate AI features into their applications without the need of becoming ML engineers.</p>
-<p>Since Superinsight provides a SQL Query Engine for developers to perform ML predictions from their ML database using SQL query. With this new approach, developers can focus on builing features and incorporate AI functions for their users inside and outside of the organization, helping their organization moving towards AI adoption.</p>
+<p>Developers are the people who build applications for people inside and outside the organization. Application is the main component that is use for capturing real world information and store them as data. Every developer would love to build applications with AI capabilities, but most of them are being held back because most of the tools used in machine learning development are not made for ML engineers. Most organizations do not have ML engineers as part of the development team, and ML engineers are hard to hire and train. To overcome this barrier, we must enable developers to incorporate AI features into their applications without the need of becoming ML engineers.</p>
+<p>Superinsight empowers developers by giving them the ability to perform ML operations using SQL query. With this new approach, developers can focus on builing features and incorporate AI functions for their users inside and outside of the organization, helping their organization moving towards AI adoption.</p>
 
               
             </article>
