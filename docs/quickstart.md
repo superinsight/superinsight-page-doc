@@ -2,7 +2,7 @@
 This is a quickstart guide on how to use Superinsight ML database to perform ML operations using SQL query.
 You will learn how to connect to your existing database table and populate data into your new ML table.
 Finally you will be able to run a semantic search using SQL query. It's that simple.
-If you don't have an account yet, please [sign up for a free trial](signup) so we can get you started.
+If you don't have an account yet, sign up to [get early access](https://www.superinsight.ai/request-a-demo) here.
 
 
 ## 1. Connect to your host
