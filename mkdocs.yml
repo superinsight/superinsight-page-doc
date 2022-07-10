@@ -15,7 +15,7 @@ nav:
       - Search: operations/search.md
       - Predict: operations/predict.md
       - Train: operations/train.md
-    - Sign Up: signup.md
+    - Official Website: https://www.superinsight.ai
 markdown_extensions:
   - attr_list
   - admonition
@@ -24,7 +24,6 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true 
   - tables
-
 plugins:
   - i18n:
       default_language: en
@@ -38,3 +37,5 @@ plugins:
         zh_TW:
           name: 中文 (台灣)
           build: true
+extra:
+  generator: false
