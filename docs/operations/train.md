@@ -19,12 +19,20 @@ FROM (SELECT movie.description as text, movie.genere as labels FROM demo_db.my_d
 WHERE MODEL_NAME = 'text_classification'
 ```
 
+### Summarization
+
+Translation model can be use to translate text from one language to another. For example, let's say you want to train a custom model to summarize the movie description to a few headlines, you run the following query to train a model using specific training data from table `movie` and using the base model `summarization` for fine tuning.
+```
+CREATE MODEL demo_db.movie_headline_summarization_model
+FROM (SELECT movie.description as source, movie.headline as summary FROM demo_db.my_database.movie as movie) as training_data
+WHERE MODEL_NAME = 'summarization'
+```
 
 ### Translation
 
 Translation model can be use to translate text from one language to another. For example, let's say you want to train a custom model to do french translation for caption in your movies, you run the following query to train a model using specific training data from table `movie_captions` and using the base model `translation` for fine tuning.
 ```
-CREATE MODEL demo_db.movie_genre_classification_model
+CREATE MODEL demo_db.movie_french_translation_model
 FROM (SELECT captions.orignal as source, captions.french as target FROM demo_db.my_database.movie_captions as captions where language = 'french') as training_data
 WHERE MODEL_NAME = 'translation'
 ```

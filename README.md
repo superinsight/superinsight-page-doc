@@ -6,10 +6,10 @@ Documentation for Superinsight
 mkdocs serve
 ```
 
-### Build and Deploy
+### Build folder and Copy to gh-pages branch
 ```
 mkdocs build --site-dir public
-```
-```
-git subtree push --prefix public origin gh-pages
+mv public ../
+git checkout gh-pages
+cp -R ../public/ ./
 ```
