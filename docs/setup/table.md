@@ -14,12 +14,6 @@ CREATE TABLE superinsight.my_mldb.movie_reviews
       WHERE movie_id < 3);
 ```
 
-#### Altering a table
-```
-ALTER TABLE superinsight.my_mldb.movie_reviews
-ADD reviewer_profile varchar(255);
-```
-
 #### Dropping a table
 ```
 DROP TABLE superinsight.my_mldb.movie_reviews
