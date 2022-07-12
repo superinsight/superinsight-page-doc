@@ -343,6 +343,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#summarization" class="md-nav__link">
+    Summarization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#translation" class="md-nav__link">
     Translation
   </a>
@@ -424,6 +431,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#summarization" class="md-nav__link">
+    Summarization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#translation" class="md-nav__link">
     Translation
   </a>
@@ -495,9 +509,15 @@
 FROM (SELECT movie.description as text, movie.genere as labels FROM demo_db.my_database.movie as movie) as training_data
 WHERE MODEL_NAME = &#39;text_classification&#39;
 </code></pre></div></p>
+<h3 id="summarization">Summarization</h3>
+<p>Translation model can be use to translate text from one language to another. For example, let's say you want to train a custom model to summarize the movie description to a few headlines, you run the following query to train a model using specific training data from table <code>movie</code> and using the base model <code>summarization</code> for fine tuning.
+<div class="highlight"><pre><span></span><code>CREATE MODEL demo_db.movie_headline_summarization_model
+FROM (SELECT movie.description as source, movie.headline as summary FROM demo_db.my_database.movie as movie) as training_data
+WHERE MODEL_NAME = &#39;summarization&#39;
+</code></pre></div></p>
 <h3 id="translation">Translation</h3>
 <p>Translation model can be use to translate text from one language to another. For example, let's say you want to train a custom model to do french translation for caption in your movies, you run the following query to train a model using specific training data from table <code>movie_captions</code> and using the base model <code>translation</code> for fine tuning.
-<div class="highlight"><pre><span></span><code>CREATE MODEL demo_db.movie_genre_classification_model
+<div class="highlight"><pre><span></span><code>CREATE MODEL demo_db.movie_french_translation_model
 FROM (SELECT captions.orignal as source, captions.french as target FROM demo_db.my_database.movie_captions as captions where language = &#39;french&#39;) as training_data
 WHERE MODEL_NAME = &#39;translation&#39;
 </code></pre></div></p>
