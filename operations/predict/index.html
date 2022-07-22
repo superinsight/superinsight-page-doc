@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.superinsight.ai/operations/predict/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
@@ -179,22 +179,37 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_3">
+        <label class="md-nav__link" for="__nav_4">
           Setup
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Setup" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Setup
         </label>
@@ -247,22 +262,106 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_5">
           Operations
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Operations" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
+        <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Operations
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Guide
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../create/" class="md-nav__link">
+        Create
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../delete/" class="md-nav__link">
+        Delete
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../drop/" class="md-nav__link">
+        Drop
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../federated/" class="md-nav__link">
+        Federated Query
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../insert/" class="md-nav__link">
+        Insert
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -378,6 +477,20 @@
     <li class="md-nav__item">
       <a href="../train/" class="md-nav__link">
         Train
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../update/" class="md-nav__link">
+        Update
       </a>
     </li>
   
@@ -534,8 +647,8 @@
 <h3 id="text-classification">Text Classification</h3>
 <p>Text classification can be use to generate labels from text. For example, let's say you want to determine if movie reviews are positive or negative, and you run the following query 
 <div class="highlight"><pre><span></span><code>SELECT movie.id, movie.movie_id, movie.review, m.labels, m.positive_score, m.negative_score
-FROM demo_db.my_database.movie_reviews as movie
-JOIN demo_db.model.text_classification as m 
+FROM mldb.movie_reviews as movie
+JOIN model.text_classification as m 
 WHERE m.labels = &#39;positive, negative&#39;
 AND movie.movie_id &gt; 2;
 </code></pre></div></p>
@@ -572,8 +685,8 @@ AND movie.movie_id &gt; 2;
 <h3 id="question-answering">Question Answering</h3>
 <p>Question answering can be use to find answers from text. For example, let's say you have the description of a movie and you need to find the main character, you can use question answering model to determine that for you.
 <div class="highlight"><pre><span></span><code>SELECT movie.movie_id, movie.description, m.answer, m._score 
-FROM demo_db.my_database.movie as movie
-JOIN demo_db.model.question_answering m
+FROM mldb.movie as movie
+JOIN model.question_answering m
 WHERE m.question = &#39;Who is the main character of the movie&#39;
 AND movie.movie_id = 8;
 </code></pre></div></p>
@@ -598,8 +711,8 @@ AND movie.movie_id = 8;
 <h3 id="summarization">Summarization</h3>
 <p>Summarization can be use to summarize long text to a shorter summary. For example, let's say you need to summary a movie into a short summary, you can use the summarization model to do that for you.
 <div class="highlight"><pre><span></span><code>SELECT movie.movie_id, movie.description, m.summary
-FROM demo_db.my_database.movie as movie
-JOIN demo_db.model.summarization m
+FROM mldb.movie as movie
+JOIN model.summarization m
 WHERE movie.movie_id = 8;
 </code></pre></div></p>
 <table>
@@ -621,8 +734,8 @@ WHERE movie.movie_id = 8;
 <h3 id="text-generation">Text Generation</h3>
 <p>Text generation model can be use to create text to get insights from existing data. For example , let's say you have the description of the movie and you will like to find out what type of audiences are best for the movie. To generate new text, you can submit a prompt to the text generation model. In the following example, we take the summary of the movie and append the text <code>What type of audience will like movie? This movie is best for people who like</code> to encourage the model to give us the answer we are looking for.
 <div class="highlight"><pre><span></span><code>SELECT movie.movie_id, m.prompt, m.text
-FROM demo_db.my_database.movie as movie
-JOIN demo_db.model.text_generation m
+FROM mldb.movie as movie
+JOIN model.text_generation m
 WHERE m.prompt = movie.summary + &#39;What type of audience will like movie? This movie is best for people who like&#39;
 WHERE movie.movie_id = 8;
 </code></pre></div></p>
@@ -645,8 +758,8 @@ WHERE movie.movie_id = 8;
 <h3 id="translation">Translation</h3>
 <p>Translation model can be use to translate text from one language to another
 <div class="highlight"><pre><span></span><code>SELECT movie.movie_id, movie.description, m.target
-FROM demo_db.my_database.movie as movie
-JOIN demo_db.model.translation m
+FROM mldbe.movie as movie
+JOIN model.translation m
 WHERE m.source = m.description and m.source_language = &#39;en_XX&#39; and m.target_language = &#39;fr_XX&#39;
 AND movie.movie_id = 8;
 </code></pre></div></p>
@@ -731,7 +844,7 @@ AND movie.movie_id = 8;
     <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.0238f547.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
       
     
   </body>

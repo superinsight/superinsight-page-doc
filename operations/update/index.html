@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://docs.superinsight.ai/operations/train/">
+        <link rel="canonical" href="https://docs.superinsight.ai/operations/update/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
     
     
       
-        <title>Train - Superinsight Documentation</title>
+        <title>Update - Superinsight Documentation</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#train-custom-models" class="md-skip">
+        <a href="#update-rows" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Train
+              Update
             
           </span>
         </div>
@@ -395,75 +395,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Train
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../train/" class="md-nav__link">
         Train
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#train-custom-models" class="md-nav__link">
-    Train custom models
-  </a>
-  
-    <nav class="md-nav" aria-label="Train custom models">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#text-classification" class="md-nav__link">
-    Text Classification
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#summarization" class="md-nav__link">
-    Summarization
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#translation" class="md-nav__link">
-    Translation
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -473,11 +409,52 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../update/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Update
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Update
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#insert-single-row" class="md-nav__link">
+    Insert Single Row
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -521,6 +498,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -529,36 +508,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#train-custom-models" class="md-nav__link">
-    Train custom models
+  <a href="#insert-single-row" class="md-nav__link">
+    Insert Single Row
   </a>
-  
-    <nav class="md-nav" aria-label="Train custom models">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#text-classification" class="md-nav__link">
-    Text Classification
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#summarization" class="md-nav__link">
-    Summarization
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#translation" class="md-nav__link">
-    Translation
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -576,64 +528,15 @@
                 
 
 
-  <h1>Train</h1>
-
-<h2 id="train-custom-models">Train custom models</h2>
-<p>To train your own custom model, you can choose a pretrained ML model as a based model, and finetuned it with your own data</p>
-<table>
-<thead>
-<tr>
-<th>Task</th>
-<th>Description</th>
-<th>Model Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Text Classification</td>
-<td>Use to assign label or class to text, labels such as sentiment or product category</td>
-<td>model.text_classification</td>
-</tr>
-<tr>
-<td>Question Answering</td>
-<td>Use to find answers in a large amount of text</td>
-<td>model.question_answering</td>
-</tr>
-<tr>
-<td>Summarization</td>
-<td>Use to summarize a large amount of text to a short description</td>
-<td>model.summarization</td>
-</tr>
-<tr>
-<td>Text Generation</td>
-<td>Use to generate text from a preceding example</td>
-<td>model.text_generation</td>
-</tr>
-<tr>
-<td>Translation</td>
-<td>Use for translating one language to another, for example English to French</td>
-<td>model.translation</td>
-</tr>
-</tbody>
-</table>
-<h3 id="text-classification">Text Classification</h3>
-<p>Text classification can be use to generate labels from text. For example, let's say you want to train your own custom model to determine if movie reviews are positive or negative, you run the following query to train a model using specific training data from table <code>movie</code> and using the base model <code>text_classification</code> for fine tuning.
-<div class="highlight"><pre><span></span><code>CREATE MODEL model.movie_genre_classification_model
-FROM (SELECT movie.description as text, movie.genere as labels FROM mldb.movie as movie) as training_data
-WHERE MODEL_NAME = &#39;text_classification&#39;
-</code></pre></div></p>
-<h3 id="summarization">Summarization</h3>
-<p>Translation model can be use to translate text from one language to another. For example, let's say you want to train a custom model to summarize the movie description to a few headlines, you run the following query to train a model using specific training data from table <code>movie</code> and using the base model <code>summarization</code> for fine tuning.
-<div class="highlight"><pre><span></span><code>CREATE MODEL model.movie_headline_summarization_model
-FROM (SELECT movie.description as source, movie.headline as summary FROM mldb.movie as movie) as training_data
-WHERE MODEL_NAME = &#39;summarization&#39;
-</code></pre></div></p>
-<h3 id="translation">Translation</h3>
-<p>Translation model can be use to translate text from one language to another. For example, let's say you want to train a custom model to do french translation for caption in your movies, you run the following query to train a model using specific training data from table <code>movie_captions</code> and using the base model <code>translation</code> for fine tuning.
-<div class="highlight"><pre><span></span><code>CREATE MODEL model.movie_french_translation_model
-FROM (SELECT captions.orignal as source, captions.french as target FROM mldb.movie_captions as captions where language = &#39;french&#39;) as training_data
-WHERE MODEL_NAME = &#39;translation&#39;
-</code></pre></div></p>
+<h1 id="update-rows">Update Rows</h1>
+<p>Rows can be inserted to the database using the <code>UPDATE</code> statement in superinsight.</p>
+<h3 id="insert-single-row">Insert Single Row</h3>
+<div class="highlight"><pre><span></span><code>UPDATE mldb.table_nam
+SET column1 = value1,
+    column2 = value2,
+    ...
+WHERE condition;
+</code></pre></div>
 
               
             </article>
@@ -649,7 +552,7 @@ WHERE MODEL_NAME = &#39;translation&#39;
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../predict/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Predict" rel="prev">
+        <a href="../train/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Train" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -658,26 +561,11 @@ WHERE MODEL_NAME = &#39;translation&#39;
               <span class="md-footer__direction">
                 Previous
               </span>
-              Predict
+              Train
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../update/" class="md-footer__link md-footer__link--next" aria-label="Next: Update" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Update
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
