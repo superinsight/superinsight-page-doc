@@ -1,13 +1,13 @@
 # Quickstart
 This is a quickstart guide on how to use Superinsight ML database to perform ML operations using SQL query.
-You will learn how to connect to your existing database table and populate data into your new ML table.
+You will learn how to create a database table and insert data into your table.
 Finally you will be able to run a semantic search using SQL query. It's that simple.
 If you don't have an account yet, sign up to [get early access](https://www.superinsight.ai/request-a-demo) here.
 
 
 ## 1. Connect to your host
 After your account has been created, you will find a dedicated host on your Superinsight Cloud Studio.
-Using this host, you will be able to connect to existing databases and create ML databases.
+Using this host, you will be able to connect to your database
 
 === "Superinsight Cloud Studio"
 
@@ -15,69 +15,61 @@ Using this host, you will be able to connect to existing databases and create ML
 
 === "Third Party Tools"
 
-    If you wish to connect to your host using other tools such DBeaver or Superset, you can use the trino jdbc protocols.
-    Note that most third party tools only support `SELECT` commands. For complete full features, we recommend using Superinsight Cloud Studio.
+    If you wish to connect to using third party tools, we recommend using DBeaver as your editor. You can use the postgresql connection.
     ```
-    jdbc:trino://username:password@yourhost.superinsight.dev:8080
+    postgresql://{username}:{password}@{host}:{port}/superinsight
     ```
 
-## 2. Attach an existing databases
+## 2. Create a database table
 
-Click on the `[Attach Database]` button and connect using your database connection. You can also use our demo database connection string below and use the name `demo_db`.
+Database table can be created using the `CREATE TABLE` statement in superinsight. For the columns that you will like to enable semantic search, assign them with the data type `TEXT`.
 ```
-postgresql://demo_user:demo_password@demo_db.superinsight.dev/demo
-```
-If you like to attach your existing database, see the list of our [Supported Databases](/setup/database) and their connection strings.
-
-
-
-## 3. Querying data from existing database
-
-After connecting to a database you execute a standard `SELECT` statement to retrieve and should see the following results
-
-```
-SELECT * 
-FROM demo_db.my_database.movie_reviews
-LIMIT 3;
+CREATE TABLE mldb.movie (
+	_id serial PRIMARY KEY,
+	title TEXT,
+    genre TEXT,
+	overview TEXT,
+	released_year varchar(100),
+	runtime varchar(100),
+	imdb_rating float8,
+	director varchar(100)
+	no_of_votes int4
+);
 ```
 
+## 3. Insert data to database table 
 
-| id            | movie_id    | review                                                           |
-| -----------   | ----------- | ------------------------------------                             |
-| 1             | 1           | This is the worst movie I ever saw because the plot is horrible  |
-| 2             | 1           | The story has no point, the main character was too weak          |
-| 3             | 2           | This movie is awesome, it is probably the best movie of the year |
+Rows can be inserted to the database using the `INSERT` statement in superinsight.
+```
+INSERT INTO mldb.movie(title, genre, overview, released_year, runtime, imdb_rating, director, no_of_votes)
+VALUES ('The Shawshank Redemption', 'Drama', 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', '1994', '142 min', 9.3, 'Frank Darabont', 2343110);
 
+INSERT INTO mldb.movie(title, genre, overview, released_year, runtime, imdb_rating, director, no_of_votes)
+VALUES ('The Godfather', 'Crime, Drama', 'An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.', '1972', '175 min', 9.2, 'Francis Ford Coppola', 1620367);
 
-## 4. Create a ML database in Superinsight
-
-Click on the `[Create Database]` button to create a new ML database and name it `my_mldb`.
-The biggest difference between a traditional database table and a Superinsight ML database table is that in ML tables are indexed in a way that allows you to perform semantic search using SQL query.
-
-## 5. Create a ML table from existing data
+INSERT INTO mldb.movie(title, genre, overview, released_year, runtime, imdb_rating, director, no_of_votes)
+VALUES ('The Dark Knight', 'Action, Crime, Drama', 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.', '2008', '152 min', 9, 'Christopher Nolan', 2303232);
 
 ```
-CREATE TABLE superinsight.my_mldb.movie_reviews
-  AS (SELECT id, review
-      FROM demo_db.my_database.movie_reviews
-      WHERE movie_id < 3);
+
+## 4. Performing semantic search on ML table
+
+Semantic search can be executed using the keyword `SIMILAR` in a standard query
 ```
-
-
-## 6. Performing semantic search on ML table
-
-After moving data to your ML table, you execute a standard `SELECT` statement to perform semantic search
-```
-SELECT * 
-FROM superinsight.my_mldb.movie_reviews
-WHERE review = '%rating for the movie was great%'
-LIMIT 3;
+SELECT * FROM mldb.movie WHERE overview SIMILAR 'gangster'
 ```
 
 You should see the following results
 
-| id            | review                                                                | _score    |
-| -----------   | -----------------------------------------------                       | --------- |
-| 3             | This movie is awesome, it is probably the best movie of the year      | 0.72      | 
-| 2             | The story has no point, the main character was too weak               | 0.28      |
-| 1             | This is the worst movie I ever saw because the plot is horrible       | 0.19      |
+| _id           | title                     | overview                                                                 | _score    |
+| -----------   | -----------               | -----------------------------------------------                          | --------- |
+| 3             | The Godfather             | An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son. | 0.72      | 
+| 2             | The Shawshank Redemption  | Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. | 0.28      |
+| 1             | The Dark Knight           | When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice. | 0.19      |
+
+
+## 5. Review and learn more
+
+As you can tell, semantic search allows us to search content in our data using the meaning of the word. Standard SQL queries are also supported so you can perform additional filtering using operators such as `=` and `LIKE`.
+
+If you like to learn more by examples, please continue with our [Operation Guide](/operations) 

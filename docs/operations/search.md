@@ -1,39 +1,16 @@
+# Semantic Search 
 
-## Semantic Search 
-ML tables are setup in a way that it allows you to perform semantic search using traditional SQL statement
+You can perform semantic search for any columns with data type `TEXT` using the operator `SIMILAR`.
 
-## Why traditional database query would fail
-
-Let's say you want to find positive movie reviews, and you run the following query 
 ```
-SELECT * 
-FROM demo_db.my_database.movie_reviews
-WHERE review like '%good%'
+SELECT _id, title, overview, _score
+FROM mldb.movie
+WHERE overview SIMILAR 'gangster'
 ```
 
-!!! fail "Failed"
-    The result came back with the review `This is the worst movie I ever saw, it's not good`. This attempt failed because traditional SQL query only uses keyword mathcing and it sees the word `good` in there
 
-    | id            | movie_id    | review                                                           |
-    | -----------   | ----------- | ------------------------------------                             |
-    | 4             | 3           | This is the worst movie I ever saw, it's not good                |
-
-
-
-## How semantic search in ML database will succeed
-
-Using ML datbase to perform semantic search is easy, just use SQL query to search your ML table and you will you get a much more accurate results with relevance score as part of the result set
-```
-SELECT * 
-FROM superinsight.my_mldb.movie_reviews
-WHERE review = '%rating for the movie was great%'
-AND _score > 0.5
-```
-
-!!! success "Success"
-    ML tables index data as `EMBEDDINGS`, which allows this search query to perform a semantic search on existing data in the table.
-
-    | id            | review                                                                | _score    |
-    | -----------   | -----------------------------------------------                       | --------- |
-    | 3             | This movie is awesome, it is probably the best movie of the year      | 0.728     | 
-    | 5             | The actor did a great job with his part and I give it thumbs up       | 0.603     |
+| _id           | title                     | overview                                                                 | _score    |
+| -----------   | -----------               | -----------------------------------------------                          | --------- |
+| 3             | The Godfather             | An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son. | 0.72      | 
+| 2             | The Shawshank Redemption  | Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. | 0.28      |
+| 1             | The Dark Knight           | When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice. | 0.19      |

@@ -8,13 +8,21 @@ theme:
 nav:
     - What is Superinsight : index.md
     - Quickstart: quickstart.md
+    - FAQ: faq.md
     - Setup: 
       - ML Database: setup/database.md
       - ML Table: setup/table.md
     - Operations:
+      - Guide: operations/index.md
+      - Create: operations/create.md
+      - Delete: operations/delete.md
+      - Drop: operations/drop.md
+      - Federated Query: operations/federated.md
+      - Insert: operations/insert.md
       - Search: operations/search.md
       - Predict: operations/predict.md
       - Train: operations/train.md
+      - Update: operations/update.md
     - Official Website: https://www.superinsight.ai
 markdown_extensions:
   - attr_list
