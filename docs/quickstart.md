@@ -32,7 +32,7 @@ CREATE TABLE mldb.movie (
 	released_year varchar(100),
 	runtime varchar(100),
 	imdb_rating float8,
-	director varchar(100)
+	director varchar(100),
 	no_of_votes int4
 );
 ```
