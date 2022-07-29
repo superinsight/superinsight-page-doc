@@ -15,8 +15,8 @@ To make a prediction, you can simply use pretrained ML model by simply utilizing
 Text classification can be use to generate labels from text. For example, let's say you want to determine if movie reviews are positive or negative, and you run the following query 
 ```
 SELECT movie.id, movie.movie_id, movie.review, m.labels, m.positive_score, m.negative_score
-FROM demo_db.my_database.movie_reviews as movie
-JOIN demo_db.model.text_classification as m 
+FROM mldb.movie_reviews as movie
+JOIN model.text_classification as m 
 WHERE m.labels = 'positive, negative'
 AND movie.movie_id > 2;
 ```
@@ -32,8 +32,8 @@ AND movie.movie_id > 2;
 Question answering can be use to find answers from text. For example, let's say you have the description of a movie and you need to find the main character, you can use question answering model to determine that for you.
 ```
 SELECT movie.movie_id, movie.description, m.answer, m._score 
-FROM demo_db.my_database.movie as movie
-JOIN demo_db.model.question_answering m
+FROM mldb.movie as movie
+JOIN model.question_answering m
 WHERE m.question = 'Who is the main character of the movie'
 AND movie.movie_id = 8;
 ```
@@ -48,8 +48,8 @@ AND movie.movie_id = 8;
 Summarization can be use to summarize long text to a shorter summary. For example, let's say you need to summary a movie into a short summary, you can use the summarization model to do that for you.
 ```
 SELECT movie.movie_id, movie.description, m.summary
-FROM demo_db.my_database.movie as movie
-JOIN demo_db.model.summarization m
+FROM mldb.movie as movie
+JOIN model.summarization m
 WHERE movie.movie_id = 8;
 ```
 
@@ -64,8 +64,8 @@ WHERE movie.movie_id = 8;
 Text generation model can be use to create text to get insights from existing data. For example , let's say you have the description of the movie and you will like to find out what type of audiences are best for the movie. To generate new text, you can submit a prompt to the text generation model. In the following example, we take the summary of the movie and append the text `What type of audience will like movie? This movie is best for people who like` to encourage the model to give us the answer we are looking for.
 ```
 SELECT movie.movie_id, m.prompt, m.text
-FROM demo_db.my_database.movie as movie
-JOIN demo_db.model.text_generation m
+FROM mldb.movie as movie
+JOIN model.text_generation m
 WHERE m.prompt = movie.summary + 'What type of audience will like movie? This movie is best for people who like'
 WHERE movie.movie_id = 8;
 ```
@@ -80,8 +80,8 @@ WHERE movie.movie_id = 8;
 Translation model can be use to translate text from one language to another
 ```
 SELECT movie.movie_id, movie.description, m.target
-FROM demo_db.my_database.movie as movie
-JOIN demo_db.model.translation m
+FROM mldbe.movie as movie
+JOIN model.translation m
 WHERE m.source = m.description and m.source_language = 'en_XX' and m.target_language = 'fr_XX'
 AND movie.movie_id = 8;
 ```
