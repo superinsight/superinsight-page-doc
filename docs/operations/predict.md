@@ -18,6 +18,7 @@ SELECT review._id, review.movie_id, review.comment, m.positive_score, m.neutral_
 FROM mldb.movie_reviews as review
 JOIN model.text_classification as m
 WHERE m.inputs = review.comment
+AND m.labels = 'positive, neutral, negative'
 AND movie.movie_id = 2;
 ```
 
