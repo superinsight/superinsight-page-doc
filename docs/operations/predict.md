@@ -14,18 +14,17 @@ To make a prediction, you can simply use pretrained ML model by simply utilizing
 
 Text classification can be use to generate labels from text. For example, let's say you want to determine if movie reviews are positive or negative, and you run the following query 
 ```
-SELECT review._id, review.movie_id, review.comment, m.positive_score, m.neutral_score, m.negative_score
-FROM mldb.movie_reviews as review
-JOIN model.text_classification as m
-WHERE m.inputs = review.comment
-AND m.labels = 'positive, neutral, negative'
-AND movie.movie_id = 2;
+SELECT movie._id, model.*
+FROM mldb.movie as movie
+JOIN model.text_classification as m on m.inputs = movie.overview
+JOIN model.text_classification as m on m.labels = ['comedy,drama,others']
+WHERE mldb.movie._id < 3
 ```
 
-| id   | movie_id  | comment                                     						 					| positive_score | neutral_score  | negative_score | 
-| --   | --------  | ----------------------------------------------------	 	 					| -------------- | -------------- | -------------- |
-| 3    | 2				 | This movie is awesome, it is probably the best movie of the year | 0.9384       	 | 0.0414				  | 0.0201   		   |
-| 4    | 2				 | This is the worst movie I ever saw, it's not good       					| 0.0115         | 0.0280				  | 0.9604 	  		 |
+| _id  | inputs                                     						 				  | _score_comedy  | _score_drama  	| _score_others  | 
+| --   | ----------------------------------------------------	 	 					| -------------- | -------------- | -------------- |
+| 1    | This movie is awesome, it is probably the best movie of the year | 0.9384       	 | 0.0414				  | 0.0201   		   |
+| 2    | This is the worst movie I ever saw, it's not good       					| 0.0115         | 0.0280				  | 0.9604 	  		 |
 
 
 ### Question Answering
@@ -34,10 +33,9 @@ Question answering can be use to find answers from text. For example, let's say 
 ```
 SELECT movie._id, movie.overview, m.answer, m._score 
 FROM mldb.movie as movie
-JOIN model.question_answering m
-WHERE m.question = 'Who is the main character of the movie'
-AND m.inputs = movie.overview
-AND movie._id = 8;
+JOIN model.question_answering m on m.inputs = movie.overview
+JOIN model.question_answering as m on m.question = ['Who is the main character of the movie']
+WHERE movie._id = 8;
 ```
 
 | _id       | overview			  	                                     						| answer            				| _score 				 |
