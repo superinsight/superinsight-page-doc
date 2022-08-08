@@ -62,7 +62,7 @@ WHERE mldb.movie._id = 12
 
 ### Text Generation 
 
-Text generation model can be use to create text to get insights from existing data. For example, if we know that a person the movie Forrest Gump, we can use the contents of Forrest Gump and ask the model to predict another movie the user will like.
+Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes the movie Forrest Gump, we can use the contents of Forrest Gump and ask the model to predict another movie this person will like.
 
 ???+ quote "Generate Movie Recommendation"
     The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.
@@ -73,7 +73,7 @@ Text generation model can be use to create text to get insights from existing da
     2. Alien
     3. American Beauty
 
-    A: This person will prefer
+    A: This person will prefer `American Beauty`
 ```
 SELECT movie._id, movie.title, predictions.*
 FROM mldb.movie as movie
@@ -85,23 +85,29 @@ JOIN model.text_generation m on m.stop_word = ['\n']
 WHERE mldb.movie._id = 12
 ```
 
-| _id       | title         | inputs                         		 	            						| prompt           				| output           				|
-| --   			| -----         | ----------------------------------------------------	 	 		| -----------------       | -----------------				|
-| 8    			| Forrest Gump  | The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. 	| Q: If the person likes the above content, which one of the following movie will be this person prefer? <br />1. Star Wars<br />2. Alien<br />3. American Beauty<br />A: This person will prefer           				| American Beauty	        |
+| _id       | title         | inputs                         		 	            			| prompt           		| output           				|
+| --   		| -----         | ----------------------------------------------------	 	 		| -----------------     | -----------------				|
+| 8    		| Forrest Gump  | The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. 	| Q: If the person likes the above content, which one of the following movie will be this person prefer? <br />1. Star Wars<br />2. Alien<br />3. American Beauty<br />A: This person will prefer           				| American Beauty	        |
 
 
 ### Translation
 
-Translation model can be use to translate text from one language to another
+Translation model can be use to translate text from one language to another.
+
+See the `Supported Language Code` section below for all supported languages.
 ```
-SELECT movie._id, movie.title, predictions.*
+SELECT movie._id, movie.title, predictions.inputs, predictions.output
 FROM mldb.movie as movie
-JOIN model.text_generation m on m.inputs = movie.overview
-JOIN model.text_generation m on m.source_language = ['en_XX']
-JOIN model.text_generation m on m.target_language = ['fr_XX']
+JOIN model.translation m on m.inputs = movie.overview
+JOIN model.translation m on m.source_language = ['en_XX']
+JOIN model.translation m on m.target_language = ['fr_XX']
 WHERE mldb.movie._id = 12
 ```
 
-| _id       | description							                                     			| target            	|
-| --   			| ----------------------------------------------------	 	 					| -----------------		|
-| 8    			| After more than thirty years of service as one of the Navy’s top aviators, Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. When he finds himself training a detachment of Top Gun graduates for a specialized mission the likes of which no living pilot has ever seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: “Rooster,” the son of Maverick’s late friend and Radar Intercept Officer Lt. Nick Bradshaw, aka “Goose”. Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it. 	| Après plus de trente ans de service en tant que l'un des meilleurs aviateurs de la Marine, Pete "Maverick" Mitchell (Tom Cruise) est à sa place, repoussant les limites en tant que pilote d'essai courageux et esquivant l'avancement de grade qui le mettrait à la terre. Lorsqu'il se retrouve à former un détachement de diplômés de Top Gun pour une mission spécialisée comme aucun pilote vivant n'a jamais vu, Maverick rencontre le lieutenant Bradley Bradshaw (Miles Teller), indicatif d'appel : "Rooster", le fils du défunt ami de Maverick et l'officier d'interception radar, le lieutenant Nick Bradshaw, alias "Goose". Confronté à un avenir incertain et confronté aux fantômes de son passé, Maverick est entraîné dans une confrontation avec ses propres peurs les plus profondes, aboutissant à une mission qui exige le sacrifice ultime de ceux qui seront choisis pour la piloter.	|
+| _id       | title         | inputs                         		 	            			| output           				|
+| --   		| -----         | ----------------------------------------------------	 	 		| -----------------				|
+| 8    		| Forrest Gump  | The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. | Les présidences de Kennedy et Johnson, les événements du Vietnam, Watergate et d'autres événements historiques se déroulent dans la perspective d'un homme d'Alabama ayant un IQ de 75 ans, dont le seul désir est de se réunir avec son ami de l'enfance. |
+
+???+ quote "Supported Language Code"
+
+    Arabic (ar_AR), Czech (cs_CZ), German (de_DE), English (en_XX), Spanish (es_XX), Estonian (et_EE), Finnish (fi_FI), French (fr_XX), Gujarati (gu_IN), Hindi (hi_IN), Italian (it_IT), Japanese (ja_XX), Kazakh (kk_KZ), Korean (ko_KR), Lithuanian (lt_LT), Latvian (lv_LV), Burmese (my_MM), Nepali (ne_NP), Dutch (nl_XX), Romanian (ro_RO), Russian (ru_RU), Sinhala (si_LK), Turkish (tr_TR), Vietnamese (vi_VN), Chinese (zh_CN), Afrikaans (af_ZA), Azerbaijani (az_AZ), Bengali (bn_IN), Persian (fa_IR), Hebrew (he_IL), Croatian (hr_HR), Indonesian (id_ID), Georgian (ka_GE), Khmer (km_KH), Macedonian (mk_MK), Malayalam (ml_IN), Mongolian (mn_MN), Marathi (mr_IN), Polish (pl_PL), Pashto (ps_AF), Portuguese (pt_XX), Swedish (sv_SE), Swahili (sw_KE), Tamil (ta_IN), Telugu (te_IN), Thai (th_TH), Tagalog (tl_XX), Ukrainian (uk_UA), Urdu (ur_PK), Xhosa (xh_ZA), Galician (gl_ES), Slovene (sl_SI)
