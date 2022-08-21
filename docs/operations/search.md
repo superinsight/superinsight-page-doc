@@ -3,9 +3,11 @@
 You can perform semantic search for any columns with data type `TEXT` using the operator `SIMILAR`.
 
 ```
-SELECT _id, title, overview, _score
+SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
 FROM mldb.movie
-WHERE overview SIMILAR 'gangster'
+JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie.overview
+JOIN model.semantic_search on model.semantic_search.similar = ['gangster']
+WHERE mldb.movie._id < 3
 ```
 
 

@@ -28,25 +28,29 @@ Here are a list of frequently asked questions that are commonly asked
 
 
     Columns with data type `TEXT` are automatically indexed for semantic search purposes.
-		To perform semantic search, use the keyword `SIMILAR` and find results base on the meaning of the word. 
+		To perform semantic search, use the query to find results base on the meaning of the sentence. 
 			```
-			SELECT * 
-			FROM my_mldb.movie_reviews
-			WHERE review SIMILAR 'rating for the movie was great'
-			AND _score > 0.5
+            SELECT mldb.movie_reviews._id, mldb.movie_reviews.review, predictions.score
+            FROM mldb.movie_reviews
+            JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie_reviews.review
+            JOIN model.semantic_search on model.semantic_search.similar = ['rating for the movie was great']
+            AND predictions.score > 0.5
+            WHERE mldb.movie._id < 3
+
+
 			```
 
-    | id            | review                                                                | _score    |
+    | _id           | review                                                                | score    |
     | -----------   | -----------------------------------------------                       | --------- |
     | 3             | This movie is awesome, it is probably the best movie of the year      | 0.728     | 
     | 5             | The actor did a great job with his part and I give it thumbs up       | 0.603     |
 
-??? quote "What a machine learning prediction?"
+??? quote "What is a machine learning prediction?"
 
     In machine learning, prediction refers to the output of an algorithm after it has been trained on previous data and applied to fresh data to estimate the likelihood of a specific result.
 
 
-??? quote "What a machine learning model training?"
+??? quote "What is a machine learning model training?"
 
     Training a machine learning (ML) model is the process of providing training data to a machine learning algorithm so that it can learn. Following the creation of the model, it may be used to generate predictions for comparable circumstances.
 		
