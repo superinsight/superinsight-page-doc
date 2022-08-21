@@ -17,7 +17,7 @@ Using this host, you will be able to connect to your database
 
     If you wish to connect to using third party tools, we recommend using DBeaver as your editor. You can use the postgresql connection.
     ```
-    postgresql://{username}:{password}@{host}:{port}/superinsight
+    postgresql://{username}:{password}@{host}:{port}/{database}
     ```
 
 ## 2. Create a database table
@@ -44,21 +44,16 @@ Rows can be inserted to the database using the `INSERT` statement in superinsigh
 === "Small Batch Test"
 	```
 	INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,director,no_of_votes) VALUES
-	 ('The Shawshank Redemption','Drama','Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.','1994','142 min',9.3,'Frank Darabont',2343110),
-	 ('The Godfather','Crime, Drama','An organized crime dynasty''s aging patriarch transfers control of his clandestine empire to his reluctant son.','1972','175 min',9.2,'Francis Ford Coppola',1620367),
-	 ('The Dark Knight','Action, Crime, Drama','When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.','2008','152 min',9.0,'Christopher Nolan',2303232),
-	 ('The Godfather: Part II','Crime, Drama','The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.','1974','202 min',9.0,'Francis Ford Coppola',1129952),
-	 ('12 Angry Men','Crime, Drama','A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.','1957','96 min',9.0,'Sidney Lumet',689845),
-	 ('The Lord of the Rings: The Return of the King','Action, Adventure, Drama','Gandalf and Aragorn lead the World of Men against Sauron''s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.','2003','201 min',8.9,'Peter Jackson',1642758),
-	 ('Pulp Fiction','Crime, Drama','The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.','1994','154 min',8.9,'Quentin Tarantino',1826188),
-	 ('Schindler''s List','Biography, Drama, History','In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.','1993','195 min',8.9,'Steven Spielberg',1213505),
-	 ('Inception','Action, Adventure, Sci-Fi','A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.','2010','148 min',8.8,'Christopher Nolan',2067042),
-	 ('Fight Club','Drama','An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.','1999','139 min',8.8,'David Fincher',1854740);
-
-	```
-
-=== "Large Batch Test"
-	```
+		('The Shawshank Redemption','Drama','Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.','1994','142 min',9.3,'Frank Darabont',2343110),
+		('The Godfather','Crime, Drama','An organized crime dynasty''s aging patriarch transfers control of his clandestine empire to his reluctant son.','1972','175 min',9.2,'Francis Ford Coppola',1620367),
+		('The Dark Knight','Action, Crime, Drama','When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.','2008','152 min',9.0,'Christopher Nolan',2303232),
+		('The Godfather: Part II','Crime, Drama','The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.','1974','202 min',9.0,'Francis Ford Coppola',1129952),
+		('12 Angry Men','Crime, Drama','A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.','1957','96 min',9.0,'Sidney Lumet',689845),
+		('The Lord of the Rings: The Return of the King','Action, Adventure, Drama','Gandalf and Aragorn lead the World of Men against Sauron''s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.','2003','201 min',8.9,'Peter Jackson',1642758),
+		('Pulp Fiction','Crime, Drama','The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.','1994','154 min',8.9,'Quentin Tarantino',1826188),
+		('Schindler''s List','Biography, Drama, History','In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.','1993','195 min',8.9,'Steven Spielberg',1213505),
+		('Inception','Action, Adventure, Sci-Fi','A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.','2010','148 min',8.8,'Christopher Nolan',2067042),
+		('Fight Club','Drama','An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.','1999','139 min',8.8,'David Fincher',1854740);
 	INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,director,no_of_votes) VALUES
 		('The Lord of the Rings: The Fellowship of the Ring','Action, Adventure, Drama','A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.','2001','178 min',8.8,'Peter Jackson',1661481),
 		('Forrest Gump','Drama, Romance','The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.','1994','142 min',8.8,'Robert Zemeckis',1809221),
@@ -70,6 +65,11 @@ Rows can be inserted to the database using the `INSERT` statement in superinsigh
 		('One Flew Over the Cuckoo''s Nest','Drama','A criminal pleads insanity and is admitted to a mental institution, where he rebels against the oppressive nurse and rallies up the scared patients.','1975','133 min',8.7,'Milos Forman',918088),
 		('Hamilton','Biography, Drama, History','The real life of one of America''s foremost founding fathers and first Secretary of the Treasury, Alexander Hamilton. Captured live on Broadway from the Richard Rodgers Theater with the original Broadway cast.','2020','160 min',8.6,'Thomas Kail',55291),
 		('Gisaengchung','Comedy, Drama, Thriller','Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.','2019','132 min',8.6,'Bong Joon Ho',552778);
+
+	```
+
+=== "Large Batch Test"
+	```
 	INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,director,no_of_votes) VALUES
 		('Soorarai Pottru','Drama','Nedumaaran Rajangam "Maara" sets out to make the common man fly and in the process takes on the world''s most capital intensive industry and several enemies who stand in his way.','2020','153 min',8.6,'Sudha Kongara',54995),
 		('Interstellar','Adventure, Drama, Sci-Fi','A team of explorers travel through a wormhole in space in an attempt to ensure humanity''s survival.','2014','169 min',8.6,'Christopher Nolan',1512360),
@@ -1158,7 +1158,11 @@ Rows can be inserted to the database using the `INSERT` statement in superinsigh
 
 Semantic search can be executed using the keyword `SIMILAR` in a standard query
 ```
-SELECT * FROM mldb.movie WHERE overview SIMILAR 'gangster'
+SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
+FROM mldb.movie
+JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie.overview
+JOIN model.semantic_search on model.semantic_search.similar = ['gangster']
+WHERE mldb.movie._id < 3
 ```
 
 You should see the following results
@@ -1170,8 +1174,8 @@ You should see the following results
 | 1             | The Dark Knight           | When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice. | 0.19      |
 
 
-## 5. Review and learn more
+## 5. Review and Learn More
 
 As you can tell, semantic search allows us to search content in our data using the meaning of the word. Standard SQL queries are also supported so you can perform additional filtering using operators such as `=` and `LIKE`.
 
-If you like to learn more by examples, please continue with our [Operation Guide](/operations) 
+If you like to learn more machine learning database operations, please continue with our [Operation Guide](/operations) 

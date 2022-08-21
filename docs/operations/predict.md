@@ -14,78 +14,100 @@ To make a prediction, you can simply use pretrained ML model by simply utilizing
 
 Text classification can be use to generate labels from text. For example, let's say you want to determine if movie reviews are positive or negative, and you run the following query 
 ```
-SELECT movie.id, movie.movie_id, movie.review, m.labels, m.positive_score, m.negative_score
-FROM mldb.movie_reviews as movie
-JOIN model.text_classification as m 
-WHERE m.labels = 'positive, negative'
-AND movie.movie_id > 2;
+SELECT mldb.movie._id, predictions.*
+FROM mldb.movie
+JOIN model.text_classification ON model.text_classification.inputs = mldb.movie.overview
+JOIN model.text_classification ON model.text_classification.labels = ['comedy,drama,others']
+WHERE mldb.movie._id < 3
 ```
 
-| id   | movie_id  | review                                     						 					| labels            	| positive_score | negative_score | 
-| --   | --------  | ----------------------------------------------------	 	 					| -----------------		| -------------- | -------------- |
-| 3    | 2				 | This movie is awesome, it is probably the best movie of the year | positive, negative	| 0.9951				 | 0.0049 	  		|
-| 4    | 3				 | This is the worst movie I ever saw, it's not good       					| positive, negative	| 0.0022				 | 0.9978 	  		|
+| _id  | inputs                                     						 				                                                        | score_comedy  | score_drama  	| score_others  | 
+| --   | ----------------------------------------------------	 	 					                                                      | -------------- | -------------- | -------------- |
+| 1    | Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. | 0.0624      	 | 0.7388				  | 0.1987   		   |
+| 2    | An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.         | 0.0272         | 0.7299 			  | 0.24282	  		 |
 
 
 ### Question Answering
 
 Question answering can be use to find answers from text. For example, let's say you have the description of a movie and you need to find the main character, you can use question answering model to determine that for you.
 ```
-SELECT movie.movie_id, movie.description, m.answer, m._score 
-FROM mldb.movie as movie
-JOIN model.question_answering m
-WHERE m.question = 'Who is the main character of the movie'
-AND movie.movie_id = 8;
+SELECT mldb.movie._id, predictions.inputs, predictions.question, predictions.answer, predictions.score
+FROM mldb.movie
+JOIN model.question_answering ON model.question_answering.inputs = mldb.movie.overview
+JOIN model.question_answering ON model.question_answering.question = ['Name of character']
+WHERE mldb.movie._id < 20 AND predictions.score > 0.2 ORDER BY predictions.score DESC
 ```
 
-| movie_id  | movie							                                     						| answer            				| _score 				 |
-| --   			| ----------------------------------------------------	 	 					| -----------------					| -------------- |
-| 8    			| After more than thirty years of service as one of the Navy’s top aviators, Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. When he finds himself training a detachment of Top Gun graduates for a specialized mission the likes of which no living pilot has ever seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: “Rooster,” the son of Maverick’s late friend and Radar Intercept Officer Lt. Nick Bradshaw, aka “Goose”. Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it. 	| Pete “Maverick” Mitchell	| 0.5555				 |
+| _id       | inputs			  	                                     						| question           | answer    		     | score  |
+| --   			| ----------------------------------------------------	 	 				| -----------------	 | --------------    | ------ |
+| 11   			| A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron. | Name of character  |  Hobbit           | 0.6807  |
+| 8   			| In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis. | Name of character  |  Oskar Schindler  | 0.2687  |
 
 
 ### Summarization
 
 Summarization can be use to summarize long text to a shorter summary. For example, let's say you need to summary a movie into a short summary, you can use the summarization model to do that for you.
 ```
-SELECT movie.movie_id, movie.description, m.summary
-FROM mldb.movie as movie
-JOIN model.summarization m
-WHERE movie.movie_id = 8;
+SELECT mldb.movie._id, mldb.movie.title, predictions.*
+FROM mldb.movie
+JOIN model.summarization ON model.summarization.inputs = mldb.movie.overview
+WHERE mldb.movie._id = 12
 ```
 
-| movie_id  | description                         		 	            						| summary            				|
-| --   			| ----------------------------------------------------	 	 					| -----------------					|
-| 8    			| After more than thirty years of service as one of the Navy’s top aviators, Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. When he finds himself training a detachment of Top Gun graduates for a specialized mission the likes of which no living pilot has ever seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: “Rooster,” the son of Maverick’s late friend and Radar Intercept Officer Lt. Nick Bradshaw, aka “Goose”. Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it. 	| Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot. Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it.	|
+| _id | title         | overview                             		 	            						| summary            				|
+| --  | ---           | ----------------------------------------------------	 	 					| -----------------					|
+| 12  | Forrest Gump  | The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.	| An Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.	|
 
 
 
 ### Text Generation 
 
-Text generation model can be use to create text to get insights from existing data. For example , let's say you have the description of the movie and you will like to find out what type of audiences are best for the movie. To generate new text, you can submit a prompt to the text generation model. In the following example, we take the summary of the movie and append the text `What type of audience will like movie? This movie is best for people who like` to encourage the model to give us the answer we are looking for.
+Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes the movie Forrest Gump, we can use the contents of Forrest Gump and ask the model to predict another movie this person will like.
+
+???+ quote "Generate Movie Recommendation"
+    The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.
+
+    Q: If the person likes the above content, which one of the following movie will be this person prefer?
+
+    1. Star Wars
+    2. Alien
+    3. American Beauty
+
+    A: This person will prefer `American Beauty`
 ```
-SELECT movie.movie_id, m.prompt, m.text
-FROM mldb.movie as movie
-JOIN model.text_generation m
-WHERE m.prompt = movie.summary + 'What type of audience will like movie? This movie is best for people who like'
-WHERE movie.movie_id = 8;
+SELECT mldb.movie._id, mldb.movie.title, predictions.*
+FROM mldb.movie
+JOIN model.text_generation ON model.text_generation.inputs = movie.overview
+JOIN model.text_generation ON model.text_generation.prompt = ['\nQ: If the person likes the above content, which one of the following movie will be this person prefer?\n1.Star Wars\n2.Alien\n3.American Beauty\nA: This person will prefer']
+JOIN model.text_generation ON model.text_generation.min_length = ['10']
+JOIN model.text_generation ON model.text_generation.max_length = ['20']
+JOIN model.text_generation ON model.text_generation.stop_word = ['\n']
+WHERE mldb.movie._id = 12
 ```
 
-| movie_id  | prompt                         		 	            						| text            				|
-| --   			| ----------------------------------------------------	 	 		| -----------------				|
-| 8    			| Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot. Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it. `What type of audience will like movie? This movie is best for people who like`  	| drama and action movies	|
+| _id       | title         | inputs                         		 	            			| prompt           		| output           				|
+| --   		| -----         | ----------------------------------------------------	 	 		| -----------------     | -----------------				|
+| 8    		| Forrest Gump  | The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. 	| Q: If the person likes the above content, which one of the following movie will be this person prefer? <br />1. Star Wars<br />2. Alien<br />3. American Beauty<br />A: This person will prefer           				| American Beauty	        |
 
 
 ### Translation
 
-Translation model can be use to translate text from one language to another
+Translation model can be use to translate text from one language to another.
+
+See the `Supported Language Code` section below for all supported languages.
 ```
-SELECT movie.movie_id, movie.description, m.target
-FROM mldbe.movie as movie
-JOIN model.translation m
-WHERE m.source = m.description and m.source_language = 'en_XX' and m.target_language = 'fr_XX'
-AND movie.movie_id = 8;
+SELECT mldb.movie._id, mldb.movie.title, predictions.inputs, predictions.output
+FROM mldb.movie
+JOIN model.translation ON model.translation.inputs = movie.overview
+JOIN model.translation ON model.translation.source_language = ['en_XX']
+JOIN model.translation ON model.translation.target_language = ['fr_XX']
+WHERE mldb.movie._id = 12
 ```
 
-| movie_id  | description							                                     			| target            	|
-| --   			| ----------------------------------------------------	 	 					| -----------------		|
-| 8    			| After more than thirty years of service as one of the Navy’s top aviators, Pete “Maverick” Mitchell (Tom Cruise) is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him. When he finds himself training a detachment of Top Gun graduates for a specialized mission the likes of which no living pilot has ever seen, Maverick encounters Lt. Bradley Bradshaw (Miles Teller), call sign: “Rooster,” the son of Maverick’s late friend and Radar Intercept Officer Lt. Nick Bradshaw, aka “Goose”. Facing an uncertain future and confronting the ghosts of his past, Maverick is drawn into a confrontation with his own deepest fears, culminating in a mission that demands the ultimate sacrifice from those who will be chosen to fly it. 	| Après plus de trente ans de service en tant que l'un des meilleurs aviateurs de la Marine, Pete "Maverick" Mitchell (Tom Cruise) est à sa place, repoussant les limites en tant que pilote d'essai courageux et esquivant l'avancement de grade qui le mettrait à la terre. Lorsqu'il se retrouve à former un détachement de diplômés de Top Gun pour une mission spécialisée comme aucun pilote vivant n'a jamais vu, Maverick rencontre le lieutenant Bradley Bradshaw (Miles Teller), indicatif d'appel : "Rooster", le fils du défunt ami de Maverick et l'officier d'interception radar, le lieutenant Nick Bradshaw, alias "Goose". Confronté à un avenir incertain et confronté aux fantômes de son passé, Maverick est entraîné dans une confrontation avec ses propres peurs les plus profondes, aboutissant à une mission qui exige le sacrifice ultime de ceux qui seront choisis pour la piloter.	|
+| _id       | title         | inputs                         		 	            			| output           				|
+| --   		| -----         | ----------------------------------------------------	 	 		| -----------------				|
+| 8    		| Forrest Gump  | The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. | Les présidences de Kennedy et Johnson, les événements du Vietnam, Watergate et d'autres événements historiques se déroulent dans la perspective d'un homme d'Alabama ayant un IQ de 75 ans, dont le seul désir est de se réunir avec son ami de l'enfance. |
+
+???+ quote "Supported Language Code"
+
+    Arabic (ar_AR), Czech (cs_CZ), German (de_DE), English (en_XX), Spanish (es_XX), Estonian (et_EE), Finnish (fi_FI), French (fr_XX), Gujarati (gu_IN), Hindi (hi_IN), Italian (it_IT), Japanese (ja_XX), Kazakh (kk_KZ), Korean (ko_KR), Lithuanian (lt_LT), Latvian (lv_LV), Burmese (my_MM), Nepali (ne_NP), Dutch (nl_XX), Romanian (ro_RO), Russian (ru_RU), Sinhala (si_LK), Turkish (tr_TR), Vietnamese (vi_VN), Chinese (zh_CN), Afrikaans (af_ZA), Azerbaijani (az_AZ), Bengali (bn_IN), Persian (fa_IR), Hebrew (he_IL), Croatian (hr_HR), Indonesian (id_ID), Georgian (ka_GE), Khmer (km_KH), Macedonian (mk_MK), Malayalam (ml_IN), Mongolian (mn_MN), Marathi (mr_IN), Polish (pl_PL), Pashto (ps_AF), Portuguese (pt_XX), Swedish (sv_SE), Swahili (sw_KE), Tamil (ta_IN), Telugu (te_IN), Thai (th_TH), Tagalog (tl_XX), Ukrainian (uk_UA), Urdu (ur_PK), Xhosa (xh_ZA), Galician (gl_ES), Slovene (sl_SI)

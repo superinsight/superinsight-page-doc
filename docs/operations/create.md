@@ -7,7 +7,7 @@ CREATE TABLE mldb.table_name (
 	_id serial PRIMARY KEY,
 	column1 TEXT,
 	column2 float8,
-	column3 varchar(100)
+	column3 varchar(100),
 	column4 int4
 );
 ```
