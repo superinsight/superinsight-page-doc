@@ -484,9 +484,11 @@
 
 <h1 id="semantic-search">Semantic Search</h1>
 <p>You can perform semantic search for any columns with data type <code>TEXT</code> using the operator <code>SIMILAR</code>.</p>
-<div class="highlight"><pre><span></span><code>SELECT _id, title, overview, _score
+<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
 FROM mldb.movie
-WHERE overview SIMILAR &#39;gangster&#39;
+JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie.overview
+JOIN model.semantic_search on model.semantic_search.similar = [&#39;gangster&#39;]
+WHERE mldb.movie._id &lt; 3
 </code></pre></div>
 <table>
 <thead>

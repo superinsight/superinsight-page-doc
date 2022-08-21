@@ -516,18 +516,20 @@ WHERE review like &#39;%good%&#39;
 </tbody>
 </table>
 <p>Columns with data type <code>TEXT</code> are automatically indexed for semantic search purposes.
-    To perform semantic search, use the keyword <code>SIMILAR</code> and find results base on the meaning of the word. 
-        <div class="highlight"><pre><span></span><code>SELECT * 
-FROM my_mldb.movie_reviews
-WHERE review SIMILAR &#39;rating for the movie was great&#39;
-AND _score &gt; 0.5
+    To perform semantic search, use the query to find results base on the meaning of the sentence. 
+        <div class="highlight"><pre><span></span><code>SELECT mldb.movie_reviews._id, mldb.movie_reviews.review, predictions.score
+FROM mldb.movie_reviews
+JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie_reviews.review
+JOIN model.semantic_search on model.semantic_search.similar = [&#39;rating for the movie was great&#39;]
+AND predictions.score &gt; 0.5
+WHERE mldb.movie._id &lt; 3
 </code></pre></div></p>
 <table>
 <thead>
 <tr>
-<th>id</th>
+<th>_id</th>
 <th>review</th>
-<th>_score</th>
+<th>score</th>
 </tr>
 </thead>
 <tbody>
@@ -545,11 +547,11 @@ AND _score &gt; 0.5
 </table>
 </details>
 <details class="quote">
-<summary>What a machine learning prediction?</summary>
+<summary>What is a machine learning prediction?</summary>
 <p>In machine learning, prediction refers to the output of an algorithm after it has been trained on previous data and applied to fresh data to estimate the likelihood of a specific result.</p>
 </details>
 <details class="quote">
-<summary>What a machine learning model training?</summary>
+<summary>What is a machine learning model training?</summary>
 <p>Training a machine learning (ML) model is the process of providing training data to a machine learning algorithm so that it can learn. Following the creation of the model, it may be used to generate predictions for comparable circumstances.</p>
 </details>
 

@@ -646,10 +646,10 @@
 </table>
 <h3 id="text-classification">Text Classification</h3>
 <p>Text classification can be use to generate labels from text. For example, let's say you want to determine if movie reviews are positive or negative, and you run the following query 
-<div class="highlight"><pre><span></span><code>SELECT movie._id, predictions.*
-FROM mldb.movie as movie
-JOIN model.text_classification as m on m.inputs = movie.overview
-JOIN model.text_classification as m on m.labels = [&#39;comedy,drama,others&#39;]
+<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, predictions.*
+FROM mldb.movie
+JOIN model.text_classification ON model.text_classification.inputs = mldb.movie.overview
+JOIN model.text_classification ON model.text_classification.labels = [&#39;comedy,drama,others&#39;]
 WHERE mldb.movie._id &lt; 3
 </code></pre></div></p>
 <table>
@@ -657,9 +657,9 @@ WHERE mldb.movie._id &lt; 3
 <tr>
 <th>_id</th>
 <th>inputs</th>
-<th>_score_comedy</th>
-<th>_score_drama</th>
-<th>_score_others</th>
+<th>score_comedy</th>
+<th>score_drama</th>
+<th>score_others</th>
 </tr>
 </thead>
 <tbody>
@@ -681,11 +681,11 @@ WHERE mldb.movie._id &lt; 3
 </table>
 <h3 id="question-answering">Question Answering</h3>
 <p>Question answering can be use to find answers from text. For example, let's say you have the description of a movie and you need to find the main character, you can use question answering model to determine that for you.
-<div class="highlight"><pre><span></span><code>SELECT movie._id, predictions.inputs, predictions.question, predictions.answer, predictions.score
-FROM mldb.movie as movie
-JOIN model.question_answering m on m.inputs = movie.overview
-JOIN model.question_answering as m on m.question = [&#39;Name of character&#39;]
-WHERE mldb.movie._id &lt; 20 and predictions.score &gt; 0.4 order by predictions.score
+<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, predictions.inputs, predictions.question, predictions.answer, predictions.score
+FROM mldb.movie
+JOIN model.question_answering ON model.question_answering.inputs = mldb.movie.overview
+JOIN model.question_answering ON model.question_answering.question = [&#39;Name of character&#39;]
+WHERE mldb.movie._id &lt; 20 AND predictions.score &gt; 0.2 ORDER BY predictions.score DESC
 </code></pre></div></p>
 <table>
 <thead>
@@ -716,9 +716,9 @@ WHERE mldb.movie._id &lt; 20 and predictions.score &gt; 0.4 order by predictions
 </table>
 <h3 id="summarization">Summarization</h3>
 <p>Summarization can be use to summarize long text to a shorter summary. For example, let's say you need to summary a movie into a short summary, you can use the summarization model to do that for you.
-<div class="highlight"><pre><span></span><code>SELECT movie._id, movie.title, predictions.*
-FROM mldb.movie as movie
-JOIN model.summarization m on m.inputs = movie.overview
+<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, predictions.*
+FROM mldb.movie
+JOIN model.summarization ON model.summarization.inputs = mldb.movie.overview
 WHERE mldb.movie._id = 12
 </code></pre></div></p>
 <table>
@@ -752,13 +752,13 @@ WHERE mldb.movie._id = 12
 </ol>
 <p>A: This person will prefer <code>American Beauty</code></p>
 </details>
-<div class="highlight"><pre><span></span><code>SELECT movie._id, movie.title, predictions.*
-FROM mldb.movie as movie
-JOIN model.text_generation m on m.inputs = movie.overview
-JOIN model.text_generation m on m.prompt = [&#39;\nQ: If the person likes the above content, which one of the following movie will be this person prefer?\n1.Star Wars\n2.Alien\n3.American Beauty\nA: This person will prefer&#39;]
-JOIN model.text_generation m on m.min_length = [&#39;10&#39;]
-JOIN model.text_generation m on m.max_length = [&#39;20&#39;]
-JOIN model.text_generation m on m.stop_word = [&#39;\n&#39;]
+<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, predictions.*
+FROM mldb.movie
+JOIN model.text_generation ON model.text_generation.inputs = movie.overview
+JOIN model.text_generation ON model.text_generation.prompt = [&#39;\nQ: If the person likes the above content, which one of the following movie will be this person prefer?\n1.Star Wars\n2.Alien\n3.American Beauty\nA: This person will prefer&#39;]
+JOIN model.text_generation ON model.text_generation.min_length = [&#39;10&#39;]
+JOIN model.text_generation ON model.text_generation.max_length = [&#39;20&#39;]
+JOIN model.text_generation ON model.text_generation.stop_word = [&#39;\n&#39;]
 WHERE mldb.movie._id = 12
 </code></pre></div>
 <table>
@@ -784,11 +784,11 @@ WHERE mldb.movie._id = 12
 <h3 id="translation">Translation</h3>
 <p>Translation model can be use to translate text from one language to another.</p>
 <p>See the <code>Supported Language Code</code> section below for all supported languages.
-<div class="highlight"><pre><span></span><code>SELECT movie._id, movie.title, predictions.inputs, predictions.output
-FROM mldb.movie as movie
-JOIN model.translation m on m.inputs = movie.overview
-JOIN model.translation m on m.source_language = [&#39;en_XX&#39;]
-JOIN model.translation m on m.target_language = [&#39;fr_XX&#39;]
+<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, predictions.inputs, predictions.output
+FROM mldb.movie
+JOIN model.translation ON model.translation.inputs = movie.overview
+JOIN model.translation ON model.translation.source_language = [&#39;en_XX&#39;]
+JOIN model.translation ON model.translation.target_language = [&#39;fr_XX&#39;]
 WHERE mldb.movie._id = 12
 </code></pre></div></p>
 <table>

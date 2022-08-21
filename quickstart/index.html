@@ -228,7 +228,7 @@
       
         <li class="md-nav__item">
   <a href="#5-review-and-learn-more" class="md-nav__link">
-    5. Review and learn more
+    5. Review and Learn More
   </a>
   
 </li>
@@ -563,7 +563,7 @@
       
         <li class="md-nav__item">
   <a href="#5-review-and-learn-more" class="md-nav__link">
-    5. Review and learn more
+    5. Review and Learn More
   </a>
   
 </li>
@@ -597,7 +597,7 @@ Using this host, you will be able to connect to your database</p>
 </div>
 <div class="tabbed-block">
 <p>If you wish to connect to using third party tools, we recommend using DBeaver as your editor. You can use the postgresql connection.
-<div class="highlight"><pre><span></span><code>postgresql://{username}:{password}@{host}:{port}/superinsight
+<div class="highlight"><pre><span></span><code>postgresql://{username}:{password}@{host}:{port}/{database}
 </code></pre></div></p>
 </div>
 </div>
@@ -622,20 +622,17 @@ Using this host, you will be able to connect to your database</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,director,no_of_votes) VALUES
- (&#39;The Shawshank Redemption&#39;,&#39;Drama&#39;,&#39;Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.&#39;,&#39;1994&#39;,&#39;142 min&#39;,9.3,&#39;Frank Darabont&#39;,2343110),
- (&#39;The Godfather&#39;,&#39;Crime, Drama&#39;,&#39;An organized crime dynasty&#39;&#39;s aging patriarch transfers control of his clandestine empire to his reluctant son.&#39;,&#39;1972&#39;,&#39;175 min&#39;,9.2,&#39;Francis Ford Coppola&#39;,1620367),
- (&#39;The Dark Knight&#39;,&#39;Action, Crime, Drama&#39;,&#39;When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.&#39;,&#39;2008&#39;,&#39;152 min&#39;,9.0,&#39;Christopher Nolan&#39;,2303232),
- (&#39;The Godfather: Part II&#39;,&#39;Crime, Drama&#39;,&#39;The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.&#39;,&#39;1974&#39;,&#39;202 min&#39;,9.0,&#39;Francis Ford Coppola&#39;,1129952),
- (&#39;12 Angry Men&#39;,&#39;Crime, Drama&#39;,&#39;A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.&#39;,&#39;1957&#39;,&#39;96 min&#39;,9.0,&#39;Sidney Lumet&#39;,689845),
- (&#39;The Lord of the Rings: The Return of the King&#39;,&#39;Action, Adventure, Drama&#39;,&#39;Gandalf and Aragorn lead the World of Men against Sauron&#39;&#39;s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.&#39;,&#39;2003&#39;,&#39;201 min&#39;,8.9,&#39;Peter Jackson&#39;,1642758),
- (&#39;Pulp Fiction&#39;,&#39;Crime, Drama&#39;,&#39;The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.&#39;,&#39;1994&#39;,&#39;154 min&#39;,8.9,&#39;Quentin Tarantino&#39;,1826188),
- (&#39;Schindler&#39;&#39;s List&#39;,&#39;Biography, Drama, History&#39;,&#39;In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.&#39;,&#39;1993&#39;,&#39;195 min&#39;,8.9,&#39;Steven Spielberg&#39;,1213505),
- (&#39;Inception&#39;,&#39;Action, Adventure, Sci-Fi&#39;,&#39;A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.&#39;,&#39;2010&#39;,&#39;148 min&#39;,8.8,&#39;Christopher Nolan&#39;,2067042),
- (&#39;Fight Club&#39;,&#39;Drama&#39;,&#39;An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.&#39;,&#39;1999&#39;,&#39;139 min&#39;,8.8,&#39;David Fincher&#39;,1854740);
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,director,no_of_votes) VALUES
+    (&#39;The Shawshank Redemption&#39;,&#39;Drama&#39;,&#39;Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.&#39;,&#39;1994&#39;,&#39;142 min&#39;,9.3,&#39;Frank Darabont&#39;,2343110),
+    (&#39;The Godfather&#39;,&#39;Crime, Drama&#39;,&#39;An organized crime dynasty&#39;&#39;s aging patriarch transfers control of his clandestine empire to his reluctant son.&#39;,&#39;1972&#39;,&#39;175 min&#39;,9.2,&#39;Francis Ford Coppola&#39;,1620367),
+    (&#39;The Dark Knight&#39;,&#39;Action, Crime, Drama&#39;,&#39;When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.&#39;,&#39;2008&#39;,&#39;152 min&#39;,9.0,&#39;Christopher Nolan&#39;,2303232),
+    (&#39;The Godfather: Part II&#39;,&#39;Crime, Drama&#39;,&#39;The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.&#39;,&#39;1974&#39;,&#39;202 min&#39;,9.0,&#39;Francis Ford Coppola&#39;,1129952),
+    (&#39;12 Angry Men&#39;,&#39;Crime, Drama&#39;,&#39;A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.&#39;,&#39;1957&#39;,&#39;96 min&#39;,9.0,&#39;Sidney Lumet&#39;,689845),
+    (&#39;The Lord of the Rings: The Return of the King&#39;,&#39;Action, Adventure, Drama&#39;,&#39;Gandalf and Aragorn lead the World of Men against Sauron&#39;&#39;s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.&#39;,&#39;2003&#39;,&#39;201 min&#39;,8.9,&#39;Peter Jackson&#39;,1642758),
+    (&#39;Pulp Fiction&#39;,&#39;Crime, Drama&#39;,&#39;The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.&#39;,&#39;1994&#39;,&#39;154 min&#39;,8.9,&#39;Quentin Tarantino&#39;,1826188),
+    (&#39;Schindler&#39;&#39;s List&#39;,&#39;Biography, Drama, History&#39;,&#39;In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.&#39;,&#39;1993&#39;,&#39;195 min&#39;,8.9,&#39;Steven Spielberg&#39;,1213505),
+    (&#39;Inception&#39;,&#39;Action, Adventure, Sci-Fi&#39;,&#39;A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.&#39;,&#39;2010&#39;,&#39;148 min&#39;,8.8,&#39;Christopher Nolan&#39;,2067042),
+    (&#39;Fight Club&#39;,&#39;Drama&#39;,&#39;An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.&#39;,&#39;1999&#39;,&#39;139 min&#39;,8.8,&#39;David Fincher&#39;,1854740);
+INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,director,no_of_votes) VALUES
     (&#39;The Lord of the Rings: The Fellowship of the Ring&#39;,&#39;Action, Adventure, Drama&#39;,&#39;A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.&#39;,&#39;2001&#39;,&#39;178 min&#39;,8.8,&#39;Peter Jackson&#39;,1661481),
     (&#39;Forrest Gump&#39;,&#39;Drama, Romance&#39;,&#39;The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.&#39;,&#39;1994&#39;,&#39;142 min&#39;,8.8,&#39;Robert Zemeckis&#39;,1809221),
     (&#39;Il buono, il brutto, il cattivo&#39;,&#39;Western&#39;,&#39;A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.&#39;,&#39;1966&#39;,&#39;161 min&#39;,8.8,&#39;Sergio Leone&#39;,688390),
@@ -646,7 +643,10 @@ Using this host, you will be able to connect to your database</p>
     (&#39;One Flew Over the Cuckoo&#39;&#39;s Nest&#39;,&#39;Drama&#39;,&#39;A criminal pleads insanity and is admitted to a mental institution, where he rebels against the oppressive nurse and rallies up the scared patients.&#39;,&#39;1975&#39;,&#39;133 min&#39;,8.7,&#39;Milos Forman&#39;,918088),
     (&#39;Hamilton&#39;,&#39;Biography, Drama, History&#39;,&#39;The real life of one of America&#39;&#39;s foremost founding fathers and first Secretary of the Treasury, Alexander Hamilton. Captured live on Broadway from the Richard Rodgers Theater with the original Broadway cast.&#39;,&#39;2020&#39;,&#39;160 min&#39;,8.6,&#39;Thomas Kail&#39;,55291),
     (&#39;Gisaengchung&#39;,&#39;Comedy, Drama, Thriller&#39;,&#39;Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.&#39;,&#39;2019&#39;,&#39;132 min&#39;,8.6,&#39;Bong Joon Ho&#39;,552778);
-INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,director,no_of_votes) VALUES
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,director,no_of_votes) VALUES
     (&#39;Soorarai Pottru&#39;,&#39;Drama&#39;,&#39;Nedumaaran Rajangam &quot;Maara&quot; sets out to make the common man fly and in the process takes on the world&#39;&#39;s most capital intensive industry and several enemies who stand in his way.&#39;,&#39;2020&#39;,&#39;153 min&#39;,8.6,&#39;Sudha Kongara&#39;,54995),
     (&#39;Interstellar&#39;,&#39;Adventure, Drama, Sci-Fi&#39;,&#39;A team of explorers travel through a wormhole in space in an attempt to ensure humanity&#39;&#39;s survival.&#39;,&#39;2014&#39;,&#39;169 min&#39;,8.6,&#39;Christopher Nolan&#39;,1512360),
     (&#39;Cidade de Deus&#39;,&#39;Crime, Drama&#39;,&#39;In the slums of Rio, two kids&#39;&#39; paths diverge as one struggles to become a photographer and the other a kingpin.&#39;,&#39;2002&#39;,&#39;130 min&#39;,8.6,&#39;Fernando Meirelles&#39;,699256),
@@ -1730,7 +1730,11 @@ INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,d
 </div>
 <h2 id="4-performing-semantic-search-on-ml-table">4. Performing semantic search on ML table</h2>
 <p>Semantic search can be executed using the keyword <code>SIMILAR</code> in a standard query
-<div class="highlight"><pre><span></span><code>SELECT * FROM mldb.movie WHERE overview SIMILAR &#39;gangster&#39;
+<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
+FROM mldb.movie
+JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie.overview
+JOIN model.semantic_search on model.semantic_search.similar = [&#39;gangster&#39;]
+WHERE mldb.movie._id &lt; 3
 </code></pre></div></p>
 <p>You should see the following results</p>
 <table>
@@ -1763,9 +1767,9 @@ INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,d
 </tr>
 </tbody>
 </table>
-<h2 id="5-review-and-learn-more">5. Review and learn more</h2>
+<h2 id="5-review-and-learn-more">5. Review and Learn More</h2>
 <p>As you can tell, semantic search allows us to search content in our data using the meaning of the word. Standard SQL queries are also supported so you can perform additional filtering using operators such as <code>=</code> and <code>LIKE</code>.</p>
-<p>If you like to learn more by examples, please continue with our <a href="/operations">Operation Guide</a> </p>
+<p>If you like to learn more machine learning database operations, please continue with our <a href="/operations">Operation Guide</a> </p>
 
               
             </article>
