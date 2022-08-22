@@ -740,44 +740,33 @@ WHERE mldb.movie._id = 12
 </tbody>
 </table>
 <h3 id="text-generation">Text Generation</h3>
-<p>Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes the movie Forrest Gump, we can use the contents of Forrest Gump and ask the model to predict another movie this person will like.</p>
+<p>Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain content, we can use it for recommendations</p>
 <details class="quote" open="open">
-<summary>Generate Movie Recommendation</summary>
-<p>The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.</p>
-<p>Q: If the person likes the above content, which one of the following movie will be this person prefer?</p>
-<ol>
-<li>Star Wars</li>
-<li>Alien</li>
-<li>American Beauty</li>
-</ol>
-<p>A: This person will prefer <code>American Beauty</code></p>
+<summary>Generate Recommendation</summary>
+<p>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
+<p>Q: If the person likes the above content, list other movies this person will like in comma delimeter format?</p>
+<p>A: <code>The Matrix, The Truman Show, The Prestige, Inception, The Dark Knight</code></p>
 </details>
-<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, predictions.*
+<div class="highlight"><pre><span></span><code>SELECT mldb.movie.overview, predictions.prompt, predictions.output
 FROM mldb.movie
-JOIN model.text_generation ON model.text_generation.inputs = movie.overview
-JOIN model.text_generation ON model.text_generation.prompt = [&#39;\nQ: If the person likes the above content, which one of the following movie will be this person prefer?\n1.Star Wars\n2.Alien\n3.American Beauty\nA: This person will prefer&#39;]
-JOIN model.text_generation ON model.text_generation.min_length = [&#39;10&#39;]
-JOIN model.text_generation ON model.text_generation.max_length = [&#39;20&#39;]
-JOIN model.text_generation ON model.text_generation.stop_word = [&#39;\n&#39;]
-WHERE mldb.movie._id = 12
+JOIN model.text_generation ON model.text_generation.inputs = mldb.movie.overview
+JOIN model.text_generation ON model.text_generation.prompt = [&#39;\nQ: If the person likes the above content, list other movies this person will like in comma delimeter format?\nA:&#39;]
+JOIN model.text_generation ON model.text_generation.stop_word = [&#39;\\n&#39;]
+WHERE mldb.movie._id = 9
 </code></pre></div>
 <table>
 <thead>
 <tr>
-<th>_id</th>
-<th>title</th>
-<th>inputs</th>
+<th>overview</th>
 <th>prompt</th>
 <th>output</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>8</td>
-<td>Forrest Gump</td>
-<td>The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.</td>
-<td>Q: If the person likes the above content, which one of the following movie will be this person prefer? <br />1. Star Wars<br />2. Alien<br />3. American Beauty<br />A: This person will prefer</td>
-<td>American Beauty</td>
+<td>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</td>
+<td>Q: If the person likes the above content, list other movies this person will like in comma delimeter format? A:</td>
+<td>The Matrix, The Truman Show, The Prestige, Inception, The Dark Knight</td>
 </tr>
 </tbody>
 </table>
@@ -786,7 +775,7 @@ WHERE mldb.movie._id = 12
 <p>See the <code>Supported Language Code</code> section below for all supported languages.
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, predictions.inputs, predictions.output
 FROM mldb.movie
-JOIN model.translation ON model.translation.inputs = movie.overview
+JOIN model.translation ON model.translation.inputs = mldb.movie.overview
 JOIN model.translation ON model.translation.source_language = [&#39;en_XX&#39;]
 JOIN model.translation ON model.translation.target_language = [&#39;fr_XX&#39;]
 WHERE mldb.movie._id = 12

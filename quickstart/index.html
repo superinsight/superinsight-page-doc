@@ -1734,7 +1734,7 @@ INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,d
 FROM mldb.movie
 JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie.overview
 JOIN model.semantic_search on model.semantic_search.similar = [&#39;gangster&#39;]
-WHERE mldb.movie._id &lt; 3
+WHERE mldb.movie._id &lt; 4
 </code></pre></div></p>
 <p>You should see the following results</p>
 <table>
