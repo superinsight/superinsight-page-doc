@@ -62,32 +62,26 @@ WHERE mldb.movie._id = 12
 
 ### Text Generation 
 
-Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes the movie Forrest Gump, we can use the contents of Forrest Gump and ask the model to predict another movie this person will like.
+Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain content, we can use it for recommendations
 
-???+ quote "Generate Movie Recommendation"
-    The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.
+???+ quote "Generate Recommendation"
+    A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.
 
-    Q: If the person likes the above content, which one of the following movie will be this person prefer?
-
-    1. Star Wars
-    2. Alien
-    3. American Beauty
-
-    A: This person will prefer `American Beauty`
+    Q: If the person likes the above content, list other movies this person will like in comma delimeter format?
+    
+    A: `The Matrix, The Truman Show, The Prestige, Inception, The Dark Knight`
 ```
-SELECT mldb.movie._id, mldb.movie.title, predictions.*
+SELECT mldb.movie.overview, predictions.prompt, predictions.output
 FROM mldb.movie
 JOIN model.text_generation ON model.text_generation.inputs = mldb.movie.overview
-JOIN model.text_generation ON model.text_generation.prompt = ['\nQ: If the person likes the above content, which one of the following movie will be this person prefer?\n1.Star Wars\n2.Alien\n3.American Beauty\nA: This person will prefer']
-JOIN model.text_generation ON model.text_generation.min_length = ['10']
-JOIN model.text_generation ON model.text_generation.max_length = ['20']
-JOIN model.text_generation ON model.text_generation.stop_word = ['\n']
-WHERE mldb.movie._id = 12
+JOIN model.text_generation ON model.text_generation.prompt = ['\nQ: If the person likes the above content, list other movies this person will like in comma delimeter format?\nA:']
+JOIN model.text_generation ON model.text_generation.stop_word = ['\\n']
+WHERE mldb.movie._id = 9
 ```
 
-| _id       | title         | inputs                         		 	            			| prompt           		| output           				|
-| --   		| -----         | ----------------------------------------------------	 	 		| -----------------     | -----------------				|
-| 8    		| Forrest Gump  | The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart. 	| Q: If the person likes the above content, which one of the following movie will be this person prefer? <br />1. Star Wars<br />2. Alien<br />3. American Beauty<br />A: This person will prefer           				| American Beauty	        |
+| overview                         		 	            			| prompt           		| output           				|
+| ----------------------------------------------------	 	 		| -----------------     | -----------------				|
+| A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O. 	| Q: If the person likes the above content, list other movies this person will like in comma delimeter format? A: | The Matrix, The Truman Show, The Prestige, Inception, The Dark Knight |
 
 
 ### Translation
@@ -98,7 +92,7 @@ See the `Supported Language Code` section below for all supported languages.
 ```
 SELECT mldb.movie._id, mldb.movie.title, predictions.inputs, predictions.output
 FROM mldb.movie
-JOIN model.translation ON model.translation.inputs = movie.overview
+JOIN model.translation ON model.translation.inputs = mldb.movie.overview
 JOIN model.translation ON model.translation.source_language = ['en_XX']
 JOIN model.translation ON model.translation.target_language = ['fr_XX']
 WHERE mldb.movie._id = 12
