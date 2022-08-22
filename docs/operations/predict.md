@@ -77,7 +77,7 @@ Text generation model can be use to create text to get insights from existing da
 ```
 SELECT mldb.movie._id, mldb.movie.title, predictions.*
 FROM mldb.movie
-JOIN model.text_generation ON model.text_generation.inputs = movie.overview
+JOIN model.text_generation ON model.text_generation.inputs = mldb.movie.overview
 JOIN model.text_generation ON model.text_generation.prompt = ['\nQ: If the person likes the above content, which one of the following movie will be this person prefer?\n1.Star Wars\n2.Alien\n3.American Beauty\nA: This person will prefer']
 JOIN model.text_generation ON model.text_generation.min_length = ['10']
 JOIN model.text_generation ON model.text_generation.max_length = ['20']

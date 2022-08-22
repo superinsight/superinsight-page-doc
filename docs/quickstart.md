@@ -1162,7 +1162,7 @@ SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
 FROM mldb.movie
 JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie.overview
 JOIN model.semantic_search on model.semantic_search.similar = ['gangster']
-WHERE mldb.movie._id < 3
+WHERE mldb.movie._id < 4
 ```
 
 You should see the following results
