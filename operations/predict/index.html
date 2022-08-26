@@ -645,12 +645,13 @@
 </tbody>
 </table>
 <h3 id="text-classification">Text Classification</h3>
-<p>Text classification can be use to generate labels from text. For example, let's say you want to determine if movie reviews are positive or negative, and you run the following query 
+<p>Text classification can be use to generate labels from text. For example, let's say you want to determine if movie overview are consider as are comedy, drama or others, and you run the following query 
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, predictions.*
 FROM mldb.movie
-JOIN model.text_classification ON model.text_classification.inputs = mldb.movie.overview
-JOIN model.text_classification ON model.text_classification.labels = [&#39;comedy,drama,others&#39;]
-WHERE mldb.movie._id &lt; 3
+JOIN model.text_classification
+ON model.text_classification.inputs = mldb.movie.overview
+WHERE mldb.movie._id &lt;= 3
+AND model.text_classification.labels = &#39;comedy,drama,others&#39;
 </code></pre></div></p>
 <table>
 <thead>
@@ -677,15 +678,25 @@ WHERE mldb.movie._id &lt; 3
 <td>0.7299</td>
 <td>0.24282</td>
 </tr>
+<tr>
+<td>3</td>
+<td>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</td>
+<td>0.0120</td>
+<td>0.8850</td>
+<td>0.10289</td>
+</tr>
 </tbody>
 </table>
 <h3 id="question-answering">Question Answering</h3>
 <p>Question answering can be use to find answers from text. For example, let's say you have the description of a movie and you need to find the main character, you can use question answering model to determine that for you.
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, predictions.inputs, predictions.question, predictions.answer, predictions.score
 FROM mldb.movie
-JOIN model.question_answering ON model.question_answering.inputs = mldb.movie.overview
-JOIN model.question_answering ON model.question_answering.question = [&#39;Name of character&#39;]
-WHERE mldb.movie._id &lt; 20 AND predictions.score &gt; 0.2 ORDER BY predictions.score DESC
+JOIN model.question_answering
+ON model.question_answering.inputs = mldb.movie.overview
+WHERE mldb.movie._id &lt; 20
+AND predictions.score &gt; 0.2
+AND model.question_answering.question = &#39;Name of character&#39;
+ORDER BY predictions.score DESC
 </code></pre></div></p>
 <table>
 <thead>
@@ -716,9 +727,10 @@ WHERE mldb.movie._id &lt; 20 AND predictions.score &gt; 0.2 ORDER BY predictions
 </table>
 <h3 id="summarization">Summarization</h3>
 <p>Summarization can be use to summarize long text to a shorter summary. For example, let's say you need to summary a movie into a short summary, you can use the summarization model to do that for you.
-<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, predictions.*
+<div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title,mldb.movie.overview, predictions.summary
 FROM mldb.movie
-JOIN model.summarization ON model.summarization.inputs = mldb.movie.overview
+JOIN model.summarization
+ON model.summarization.inputs = mldb.movie.overview
 WHERE mldb.movie._id = 12
 </code></pre></div></p>
 <table>
@@ -740,19 +752,20 @@ WHERE mldb.movie._id = 12
 </tbody>
 </table>
 <h3 id="text-generation">Text Generation</h3>
-<p>Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain content, we can use it for recommendations</p>
+<p>Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain content, we can use it generate recommendations</p>
 <details class="quote" open="open">
-<summary>Generate Recommendation</summary>
+<summary>Generate Recommendations</summary>
 <p>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
 <p>Q: If the person likes the above content, list other movies this person will like in comma delimeter format?</p>
 <p>A: <code>The Matrix, The Truman Show, The Prestige, Inception, The Dark Knight</code></p>
 </details>
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie.overview, predictions.prompt, predictions.output
 FROM mldb.movie
-JOIN model.text_generation ON model.text_generation.inputs = mldb.movie.overview
-JOIN model.text_generation ON model.text_generation.prompt = [&#39;\nQ: If the person likes the above content, list other movies this person will like in comma delimeter format?\nA:&#39;]
-JOIN model.text_generation ON model.text_generation.stop_word = [&#39;\\n&#39;]
+JOIN model.text_generation
+ON model.text_generation.inputs = mldb.movie.overview
 WHERE mldb.movie._id = 9
+AND model.text_generation.prompt = &#39;\nQ: If the person likes the above content, list other movies this person will like in comma delimeter format?\nA:&#39;
+AND model.text_generation.stop_word = &#39;\\n&#39;
 </code></pre></div>
 <table>
 <thead>
@@ -775,10 +788,11 @@ WHERE mldb.movie._id = 9
 <p>See the <code>Supported Language Code</code> section below for all supported languages.
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, predictions.inputs, predictions.output
 FROM mldb.movie
-JOIN model.translation ON model.translation.inputs = mldb.movie.overview
-JOIN model.translation ON model.translation.source_language = [&#39;en_XX&#39;]
-JOIN model.translation ON model.translation.target_language = [&#39;fr_XX&#39;]
+JOIN model.translation
+ON model.translation.inputs = mldb.movie.overview
 WHERE mldb.movie._id = 12
+AND model.translation.source_language = [&#39;en_XX&#39;]
+AND model.translation.target_language = [&#39;fr_XX&#39;]
 </code></pre></div></p>
 <table>
 <thead>

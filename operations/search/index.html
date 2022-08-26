@@ -483,12 +483,19 @@
 
 
 <h1 id="semantic-search">Semantic Search</h1>
-<p>You can perform semantic search for any columns with data type <code>TEXT</code> using the operator <code>SIMILAR</code>.</p>
+<p>Traditional database tables only allow users to search text and numbers using keyword matching or full text search. By default, machine learning database tables store text and image as embeddings, making it easy for users to perfrom semantic search with simple SQL statement.</p>
+<div class="admonition warning">
+<p class="admonition-title">Prerequisite<p>If you like to enable semantic search for your columns, make sure the column is created using data type <code>TEXT</code></p>
+</p>
+</div>
+<p>Semantic Search can be find information using the meaning of the words. For example, let's say you want to search for <code>ganster</code> movies, you can run the following query</p>
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
 FROM mldb.movie
-JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie.overview
-JOIN model.semantic_search on model.semantic_search.similar = [&#39;gangster&#39;]
-WHERE mldb.movie._id &lt; 3
+JOIN model.semantic_search
+ON model.semantic_search.inputs = mldb.movie.overview
+WHERE mldb.movie._id &lt; 20
+AND model.semantic_search.similar = &#39;gangster&#39;
+ORDER BY predictions.score DESC
 </code></pre></div>
 <table>
 <thead>
@@ -496,27 +503,27 @@ WHERE mldb.movie._id &lt; 3
 <th>_id</th>
 <th>title</th>
 <th>overview</th>
-<th>_score</th>
+<th>score</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>3</td>
-<td>The Godfather</td>
-<td>An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.</td>
-<td>0.72</td>
+<td>7</td>
+<td>Pulp Fiction</td>
+<td>The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.</td>
+<td>0.61</td>
 </tr>
 <tr>
-<td>2</td>
-<td>The Shawshank Redemption</td>
-<td>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</td>
-<td>0.28</td>
+<td>16</td>
+<td>Goodfellas</td>
+<td>The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.</td>
+<td>0.39</td>
 </tr>
 <tr>
-<td>1</td>
-<td>The Dark Knight</td>
-<td>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</td>
-<td>0.19</td>
+<td>10</td>
+<td>Fight Club</td>
+<td>An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.</td>
+<td>0.39</td>
 </tr>
 </tbody>
 </table>
