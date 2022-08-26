@@ -27,7 +27,7 @@ Database table can be created using the `CREATE TABLE` statement in superinsight
 CREATE TABLE mldb.movie (
 	_id serial PRIMARY KEY,
 	title TEXT,
-    genre TEXT,
+  genre TEXT,
 	overview TEXT,
 	released_year varchar(100),
 	runtime varchar(100),
@@ -1156,26 +1156,25 @@ Rows can be inserted to the database using the `INSERT` statement in superinsigh
 
 ## 4. Performing semantic search on ML table
 
-Semantic search can be executed using the keyword `SIMILAR` in a standard query
 ```
 SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
 FROM mldb.movie
-JOIN model.semantic_search on model.semantic_search.inputs = mldb.movie.overview
-JOIN model.semantic_search on model.semantic_search.similar = ['gangster']
-WHERE mldb.movie._id < 4
+JOIN model.semantic_search
+ON model.semantic_search.inputs = mldb.movie.overview
+WHERE mldb.movie._id < 20
+AND model.semantic_search.similar = 'gangster'
+ORDER BY predictions.score DESC
 ```
 
-You should see the following results
-
-| _id           | title                     | overview                                                                 | _score    |
-| -----------   | -----------               | -----------------------------------------------                          | --------- |
-| 3             | The Godfather             | An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son. | 0.72      | 
-| 2             | The Shawshank Redemption  | Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. | 0.28      |
-| 1             | The Dark Knight           | When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice. | 0.19      |
+| _id    | title         | overview                                                                 | score    |
+| -----  | -----------   | -----------------------------------------------                          | --------- |
+| 7      | Pulp Fiction  | The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption. | 0.61      | 
+| 16     | Goodfellas    | The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate. | 0.39      |
+| 10     | Fight Club    | An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more. | 0.39      |
 
 
-## 5. Review and Learn More
+## 5. Try More
 
 As you can tell, semantic search allows us to search content in our data using the meaning of the word. Standard SQL queries are also supported so you can perform additional filtering using operators such as `=` and `LIKE`.
 
-If you like to learn more machine learning database operations, please continue with our [Operation Guide](/operations) 
+If you like to learn more machine learning database operations, please continue our guide for [Predict Operations](/operations/predict/) 

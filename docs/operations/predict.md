@@ -12,20 +12,21 @@ To make a prediction, you can simply use pretrained ML model by simply utilizing
 
 ### Text Classification 
 
-Text classification can be use to generate labels from text. For example, let's say you want to determine if movie reviews are positive or negative, and you run the following query 
+Text classification can be use to generate labels from text. For example, let's say you want to determine if movie overview are consider as are comedy, drama or others, and you run the following query 
 ```
 SELECT mldb.movie._id, predictions.*
 FROM mldb.movie
-JOIN model.text_classification ON model.text_classification.inputs = mldb.movie.overview
-JOIN model.text_classification ON model.text_classification.labels = ['comedy,drama,others']
-WHERE mldb.movie._id < 3
+JOIN model.text_classification
+ON model.text_classification.inputs = mldb.movie.overview
+WHERE mldb.movie._id <= 3
+AND model.text_classification.labels = 'comedy,drama,others'
 ```
 
-| _id  | inputs                                     						 				                                                        | score_comedy  | score_drama  	| score_others  | 
-| --   | ----------------------------------------------------	 	 					                                                      | -------------- | -------------- | -------------- |
-| 1    | Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. | 0.0624      	 | 0.7388				  | 0.1987   		   |
-| 2    | An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.         | 0.0272         | 0.7299 			  | 0.24282	  		 |
-
+| _id  | inputs                                     						 				                                    | score_comedy   | score_drama    | score_others    | 
+| --   | ----------------------------------------------------	 	 					                                        | -------------- | -------------- | --------------  |
+| 1    | Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. | 0.0624      	 | 0.7388	      | 0.1987   	    |
+| 2    | An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.         | 0.0272         | 0.7299 	      | 0.24282	  	    |
+| 3    | When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice. | 0.0120         | 0.8850	      | 0.10289	  	    |
 
 ### Question Answering
 
@@ -33,9 +34,12 @@ Question answering can be use to find answers from text. For example, let's say 
 ```
 SELECT mldb.movie._id, predictions.inputs, predictions.question, predictions.answer, predictions.score
 FROM mldb.movie
-JOIN model.question_answering ON model.question_answering.inputs = mldb.movie.overview
-JOIN model.question_answering ON model.question_answering.question = ['Name of character']
-WHERE mldb.movie._id < 20 AND predictions.score > 0.2 ORDER BY predictions.score DESC
+JOIN model.question_answering
+ON model.question_answering.inputs = mldb.movie.overview
+WHERE mldb.movie._id < 20
+AND predictions.score > 0.2
+AND model.question_answering.question = 'Name of character'
+ORDER BY predictions.score DESC
 ```
 
 | _id       | inputs			  	                                     						| question           | answer    		     | score  |
@@ -48,9 +52,10 @@ WHERE mldb.movie._id < 20 AND predictions.score > 0.2 ORDER BY predictions.score
 
 Summarization can be use to summarize long text to a shorter summary. For example, let's say you need to summary a movie into a short summary, you can use the summarization model to do that for you.
 ```
-SELECT mldb.movie._id, mldb.movie.title, predictions.*
+SELECT mldb.movie._id, mldb.movie.title,mldb.movie.overview, predictions.summary
 FROM mldb.movie
-JOIN model.summarization ON model.summarization.inputs = mldb.movie.overview
+JOIN model.summarization
+ON model.summarization.inputs = mldb.movie.overview
 WHERE mldb.movie._id = 12
 ```
 
@@ -62,9 +67,9 @@ WHERE mldb.movie._id = 12
 
 ### Text Generation 
 
-Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain content, we can use it for recommendations
+Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain content, we can use it generate recommendations
 
-???+ quote "Generate Recommendation"
+???+ quote "Generate Recommendations"
     A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.
 
     Q: If the person likes the above content, list other movies this person will like in comma delimeter format?
@@ -73,10 +78,11 @@ Text generation model can be use to create text to get insights from existing da
 ```
 SELECT mldb.movie.overview, predictions.prompt, predictions.output
 FROM mldb.movie
-JOIN model.text_generation ON model.text_generation.inputs = mldb.movie.overview
-JOIN model.text_generation ON model.text_generation.prompt = ['\nQ: If the person likes the above content, list other movies this person will like in comma delimeter format?\nA:']
-JOIN model.text_generation ON model.text_generation.stop_word = ['\\n']
+JOIN model.text_generation
+ON model.text_generation.inputs = mldb.movie.overview
 WHERE mldb.movie._id = 9
+AND model.text_generation.prompt = '\nQ: If the person likes the above content, list other movies this person will like in comma delimeter format?\nA:'
+AND model.text_generation.stop_word = '\\n'
 ```
 
 | overview                         		 	            			| prompt           		| output           				|
@@ -92,10 +98,11 @@ See the `Supported Language Code` section below for all supported languages.
 ```
 SELECT mldb.movie._id, mldb.movie.title, predictions.inputs, predictions.output
 FROM mldb.movie
-JOIN model.translation ON model.translation.inputs = mldb.movie.overview
-JOIN model.translation ON model.translation.source_language = ['en_XX']
-JOIN model.translation ON model.translation.target_language = ['fr_XX']
+JOIN model.translation
+ON model.translation.inputs = mldb.movie.overview
 WHERE mldb.movie._id = 12
+AND model.translation.source_language = ['en_XX']
+AND model.translation.target_language = ['fr_XX']
 ```
 
 | _id       | title         | inputs                         		 	            			| output           				|
