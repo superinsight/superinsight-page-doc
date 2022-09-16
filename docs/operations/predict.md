@@ -104,7 +104,7 @@ WHERE mldb.movie._id = 12
 
 Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain movies, we can use the overview of the movies to generate text to recommend related movies. There is a big difference between using text generation to generate recommendations versus using a [recommender](/operations/predict/#recommender). Recommender model uses custom data to train a custom model and the model has no common knowledge about the outside world. Text generation is a pretrained model that already has knowledge about the world so it doesn't need custom data to make predictions.
 
-???+ quote "Generate Recommendations"
+!!! missing ""
     A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.
 
     Q: If the person likes the above content, list other movies this person will like in comma delimeter format?
