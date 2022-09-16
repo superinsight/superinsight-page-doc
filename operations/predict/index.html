@@ -820,12 +820,11 @@ WHERE mldb.movie._id = 12
 </table>
 <h3 id="text-generation">Text Generation</h3>
 <p>Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain movies, we can use the overview of the movies to generate text to recommend related movies. There is a big difference between using text generation to generate recommendations versus using a <a href="/operations/predict/#recommender">recommender</a>. Recommender model uses custom data to train a custom model and the model has no common knowledge about the outside world. Text generation is a pretrained model that already has knowledge about the world so it doesn't need custom data to make predictions.</p>
-<details class="quote" open="open">
-<summary>Generate Recommendations</summary>
+<div class="admonition missing">
 <p>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
 <p>Q: If the person likes the above content, list other movies this person will like in comma delimeter format?</p>
 <p>A: <code>The Matrix, The Truman Show, The Prestige, Inception, The Dark Knight</code></p>
-</details>
+</div>
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie.overview, predictions.prompt, predictions.output
 FROM mldb.movie
 JOIN model.text_generation
