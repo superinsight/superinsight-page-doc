@@ -2,77 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://docs.superinsight.ai/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/faq/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/quickstart/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/create/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/delete/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/drop/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/federated/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/insert/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/predict/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/search/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/train/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/update/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/setup/database/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://docs.superinsight.ai/setup/dataset/</loc>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://docs.superinsight.ai/setup/table/</loc>
-         <lastmod>2022-08-26</lastmod>
+         <lastmod>2022-09-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

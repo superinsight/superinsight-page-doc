@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#predict-with-pretrained-models" class="md-skip">
+        <a href="#model-predictions" class="md-skip">
           Skip to content
         </a>
       
@@ -221,22 +221,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/database/" class="md-nav__link">
-        ML Database
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../setup/table/" class="md-nav__link">
-        ML Table
+      <a href="../../setup/dataset/" class="md-nav__link">
+        Dataset
       </a>
     </li>
   
@@ -413,11 +399,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#predict-with-pretrained-models" class="md-nav__link">
-    Predict with pretrained models
+  <a href="#model-predictions" class="md-nav__link">
+    Model Predictions
   </a>
   
-    <nav class="md-nav" aria-label="Predict with pretrained models">
+    <nav class="md-nav" aria-label="Model Predictions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -430,6 +416,13 @@
           <li class="md-nav__item">
   <a href="#question-answering" class="md-nav__link">
     Question Answering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommender" class="md-nav__link">
+    Recommender
   </a>
   
 </li>
@@ -543,11 +536,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#predict-with-pretrained-models" class="md-nav__link">
-    Predict with pretrained models
+  <a href="#model-predictions" class="md-nav__link">
+    Model Predictions
   </a>
   
-    <nav class="md-nav" aria-label="Predict with pretrained models">
+    <nav class="md-nav" aria-label="Model Predictions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -560,6 +553,13 @@
           <li class="md-nav__item">
   <a href="#question-answering" class="md-nav__link">
     Question Answering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommender" class="md-nav__link">
+    Recommender
   </a>
   
 </li>
@@ -606,8 +606,8 @@
 
   <h1>Predict</h1>
 
-<h2 id="predict-with-pretrained-models">Predict with pretrained models</h2>
-<p>To make a prediction, you can simply use pretrained ML model by simply utilizing as a table under the model schema. By default ML database comes with the following ML models </p>
+<h2 id="model-predictions">Model Predictions</h2>
+<p>To make predictions, you can simply use pretrained or custom models by simply utilizing as a table under the model schema. Superinsight support the following models. </p>
 <table>
 <thead>
 <tr>
@@ -628,6 +628,11 @@
 <td>model.question_answering</td>
 </tr>
 <tr>
+<td>Recommender</td>
+<td>Use to recommend items to user base on collaborative filtering</td>
+<td>model.recommender</td>
+</tr>
+<tr>
 <td>Summarization</td>
 <td>Use to summarize a large amount of text to a short description</td>
 <td>model.summarization</td>
@@ -639,7 +644,7 @@
 </tr>
 <tr>
 <td>Translation</td>
-<td>Use for translating one language to another, for example English to French</td>
+<td>Use to translate one language to another, for example English to French</td>
 <td>model.translation</td>
 </tr>
 </tbody>
@@ -725,6 +730,68 @@ ORDER BY predictions.score DESC
 </tr>
 </tbody>
 </table>
+<h3 id="recommender">Recommender</h3>
+<p>Recommender can be use to predict items that a user will be interested in base on other users with similar interests.</p>
+<div class="admonition warning">
+<p class="admonition-title">Prerequisite</p>
+<p>There is no default model for recommender because recommender model can only be effective after being trained from custom data, to create a custom recommender model, follow instructions from <a href="/operations/train/#recommender">training recommender model</a> for more information.</p>
+</div>
+<p>The following query demonstrate how to recommend movies to a user by joining the table <code>mldb.movie_rating</code> with a custom recommender model <code>{my_model_id}</code>.</p>
+<p>Predictions for this model requires the parameters <code>user_id</code> and <code>item_id</code>, and we can pass them into the model by specifing the table column <code>mldb.movie_rating.user_id</code> to be map as <code>model.recommender.user_id</code> and the table column <code>mldb.movie_rating.movie_id</code> to be map as <code>model.recommender.item_id</code>.</p>
+<p>To specifiy how many items to recommend, include the condition <code>model.recommender.max_size = 5</code>. The default max_size is 3.</p>
+<p>To specifiy the user to predict recommendations, include the condition <code>mldb.movie_rating.user_id = 1</code>. To make recommendations for all users, you can skip this condition.</p>
+<p>Since we want to see the top recommendations, we can use <code>predictions.score DESC</code> to sort the recommendations by the highest score.
+<div class="highlight"><pre><span></span><code>SELECT predictions.user_id, predictions.item_id, predictions.score, mldb.movie_rating.movie_id
+FROM mldb.movie_rating
+JOIN model.recommender ON model.recommender.user_id = mldb.movie_rating.user_id
+WHERE model.recommender.item_id = mldb.movie_rating.movie_id
+AND model.recommender.model_id = &#39;{my_model_id}&#39;
+AND model.recommender.max_size = 5
+AND mldb.movie_rating.user_id = 1
+ORDER BY predictions.score DESC
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>item_id</th>
+<th>score</th>
+<th>movie_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2204</td>
+<td>0.0074</td>
+<td>2204</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1674</td>
+<td>0.0071</td>
+<td>1674</td>
+</tr>
+<tr>
+<td>1</td>
+<td>91529</td>
+<td>0.0064</td>
+<td>91529</td>
+</tr>
+<tr>
+<td>1</td>
+<td>6932</td>
+<td>0.0061</td>
+<td>6932</td>
+</tr>
+<tr>
+<td>1</td>
+<td>158528</td>
+<td>0.0059</td>
+<td>158528</td>
+</tr>
+</tbody>
+</table>
 <h3 id="summarization">Summarization</h3>
 <p>Summarization can be use to summarize long text to a shorter summary. For example, let's say you need to summary a movie into a short summary, you can use the summarization model to do that for you.
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title,mldb.movie.overview, predictions.summary
@@ -752,7 +819,7 @@ WHERE mldb.movie._id = 12
 </tbody>
 </table>
 <h3 id="text-generation">Text Generation</h3>
-<p>Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain content, we can use it generate recommendations</p>
+<p>Text generation model can be use to create text to get insights from existing data. For example, if we know that a person likes certain movies, we can use the overview of the movies to generate text to recommend related movies. There is a big difference between using text generation to generate recommendations versus using a <a href="/operations/predict/#recommender">recommender</a>. Recommender model uses custom data to train a custom model and the model has no common knowledge about the outside world. Text generation is a pretrained model that already has knowledge about the world so it doesn't need custom data to make predictions.</p>
 <details class="quote" open="open">
 <summary>Generate Recommendations</summary>
 <p>A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>

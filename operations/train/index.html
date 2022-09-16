@@ -221,22 +221,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/database/" class="md-nav__link">
-        ML Database
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../setup/table/" class="md-nav__link">
-        ML Table
+      <a href="../../setup/dataset/" class="md-nav__link">
+        Dataset
       </a>
     </li>
   
@@ -442,6 +428,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#recommender" class="md-nav__link">
+    Recommender
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#summarization" class="md-nav__link">
     Summarization
   </a>
@@ -544,6 +537,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#recommender" class="md-nav__link">
+    Recommender
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#summarization" class="md-nav__link">
     Summarization
   </a>
@@ -600,6 +600,11 @@
 <td>model.question_answering</td>
 </tr>
 <tr>
+<td>Recommender</td>
+<td>Use to recommend items to user base on collaborative filtering</td>
+<td>model.recommender</td>
+</tr>
+<tr>
 <td>Summarization</td>
 <td>Use to summarize a large amount of text to a short description</td>
 <td>model.summarization</td>
@@ -617,23 +622,222 @@
 </tbody>
 </table>
 <h3 id="text-classification">Text Classification</h3>
-<p>Text classification can be use to generate labels from text. For example, let's say you want to train your own custom model to determine if movie reviews are positive or negative, you run the following query to train a model using specific training data from table <code>movie</code> and using the base model <code>text_classification</code> for fine tuning.
-<div class="highlight"><pre><span></span><code>CREATE MODEL model.movie_genre_classification_model
-FROM (SELECT movie.description as text, movie.genere as labels FROM mldb.movie as movie) as training_data
+<p>Text classification can be use to generate labels from text. For example, let's say you want to train your own custom model to determine the generes of movies, you run the following query to train a model using specific training data from table <code>movie</code> and using the base model <code>text_classification</code> for fine tuning.</p>
+<p>To prepare the training dataset, we can run the following query to get the the text and labels
+<div class="highlight"><pre><span></span><code>SELECT movie.overview as text, movie.genre as labels FROM mldb.movie as movie
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>text</th>
+<th>labels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</td>
+<td>Drama</td>
+</tr>
+<tr>
+<td>An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.</td>
+<td>Crime, Drama</td>
+</tr>
+<tr>
+<td>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</td>
+<td>Action, Crime, Drama</td>
+</tr>
+</tbody>
+</table>
+<p>To train a custom model, we can run the following query
+<div class="highlight"><pre><span></span><code>CREATE MODEL model.my_movie_classification_model
+FROM (SELECT movie.overview as text, movie.genre as labels FROM mldb.movie) as training_data
 WHERE MODEL_NAME = &#39;text_classification&#39;
 </code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>model_id</th>
+<th>model_name</th>
+<th>model_type</th>
+<th>training_data</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>my_model_id</td>
+<td>movie_genre_classification_model</td>
+<td>text_classification</td>
+<td>SELECT movie.overview as text, movie.genre as labels FROM mldb.movie</td>
+<td>initializing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recommender">Recommender</h3>
+<p>Recommender can be use to predict items that a user will be interested in base on other users with similar interests. For example, let's say we want recommend movies to our users.  We can use a database table of movie rating to trained our custom model. To get this sample data, import it from <a href="/setup/dataset/#movie-rating">movie rating dataset</a>.</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>movie_id</th>
+<th>rating</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>31</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1029</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>To prepare a training dataset with only the column name <code>user_id</code> and <code>item_id</code> for the model. Movies are rated from 1-5, and since we only need positive rating in our training data, we can run the following query to create the training data for positive reviews higher than 3. To preview the training data we can run the following query
+<div class="highlight"><pre><span></span><code>SELECT user_id as user_id, movie_id as item_id FROM mldb.movie_rating WHERE mldb.movie_rating.rating &gt; 3
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>item_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1172</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1339</td>
+</tr>
+</tbody>
+</table>
+<p>We can then run the following query to train a model under the name <code>my_movie_recommender_model</code> using our training_data. To indicate that this training is for a recommender model, we will need to pass in the condition <code>MODEL_NAME = 'recommender'</code>
+<div class="highlight"><pre><span></span><code>CREATE MODEL model.my_movie_recommender_model
+FROM (SELECT user_id as user_id, movie_id as item_id FROM mldb.movie_rating WHERE mldb.movie_rating.rating &gt; 3) as training_data
+WHERE MODEL_NAME = &#39;recommender&#39;
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>model_id</th>
+<th>model_name</th>
+<th>model_type</th>
+<th>training_data</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>my_model_id</td>
+<td>my_movie_recommender_model</td>
+<td>recommender</td>
+<td>SELECT user_id as user_id, movie_id as item_id FROM mldb.movie_rating WHERE mldb.movie_rating.rating &gt; 3</td>
+<td>initializing</td>
+</tr>
+</tbody>
+</table>
+<p>The result set will provide the <code>model_id</code> for our custom model. To make predictions for this model, continue at <a href="/operations/predict/#recommender">predict recommender model</a>.</p>
 <h3 id="summarization">Summarization</h3>
-<p>Translation model can be use to translate text from one language to another. For example, let's say you want to train a custom model to summarize the movie description to a few headlines, you run the following query to train a model using specific training data from table <code>movie</code> and using the base model <code>summarization</code> for fine tuning.
-<div class="highlight"><pre><span></span><code>CREATE MODEL model.movie_headline_summarization_model
-FROM (SELECT movie.description as source, movie.headline as summary FROM mldb.movie as movie) as training_data
+<p>Summarization can be use to summarize a large amount of text to a short description . For example, let's say you want to train a custom model to summarize the movie description to a few lines, you run the following query to train a model using specific training data from table <code>movie</code> and using the base model <code>summarization</code> for fine tuning.</p>
+<div class="highlight"><pre><span></span><code>SELECT movie.overview as summary, movie.description as source FROM mldb.movie
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>summary</th>
+<th>source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</td>
+<td>......</td>
+</tr>
+<tr>
+<td>An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.</td>
+<td>......</td>
+</tr>
+</tbody>
+</table>
+<p>To train a custom model, we can run the following query
+<div class="highlight"><pre><span></span><code>CREATE MODEL model.my_movie_summarization_model
+FROM (SELECT movie.overview as summary, movie.description as source FROM mldb.movie) as training_data
 WHERE MODEL_NAME = &#39;summarization&#39;
 </code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>model_id</th>
+<th>model_name</th>
+<th>model_type</th>
+<th>training_data</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>my_model_id</td>
+<td>my_movie_summarization_model</td>
+<td>summarization</td>
+<td>SELECT movie.overview as summary, movie.details as source FROM mldb.movie</td>
+<td>initializing</td>
+</tr>
+</tbody>
+</table>
 <h3 id="translation">Translation</h3>
-<p>Translation model can be use to translate text from one language to another. For example, let's say you want to train a custom model to do french translation for caption in your movies, you run the following query to train a model using specific training data from table <code>movie_captions</code> and using the base model <code>translation</code> for fine tuning.
+<p>Translation model can be use to translate text from one language to another. For example, let's say you want to train a custom model to do french translation for caption in your movies, you run the following query to train a model using specific training data from table <code>movie_captions</code> and using the base model <code>translation</code> for fine tuning.</p>
+<p>To get the training data, we can run the following query
+<div class="highlight"><pre><span></span><code>SELECT captions.orignal as source, captions.french as target FROM mldb.movie_captions as captions where language = &#39;french&#39;
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>source</th>
+<th>target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</td>
+<td>Deux hommes emprisonnés se lient pendant plusieurs années, trouvant un réconfort et une éventuelle rédemption grâce à des actes de décence commune.</td>
+</tr>
+<tr>
+<td>An organized crime dynasty's aging patriarch transfers control of his clandestine empire to his reluctant son.</td>
+<td>Le patriarche vieillissant d'une dynastie du crime organisé transfère le contrôle de son empire clandestin à son fils réticent.</td>
+</tr>
+</tbody>
+</table>
+<p>To train a custom model, we can run the following query
 <div class="highlight"><pre><span></span><code>CREATE MODEL model.movie_french_translation_model
 FROM (SELECT captions.orignal as source, captions.french as target FROM mldb.movie_captions as captions where language = &#39;french&#39;) as training_data
 WHERE MODEL_NAME = &#39;translation&#39;
 </code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>model_id</th>
+<th>model_name</th>
+<th>model_type</th>
+<th>training_data</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>my_model_id</td>
+<td>my_movie_translation_model</td>
+<td>translation</td>
+<td>SELECT captions.orignal as source, captions.french as target FROM mldb.movie_captions as captions where language = 'french'</td>
+<td>initializing</td>
+</tr>
+</tbody>
+</table>
 
               
             </article>
