@@ -10,8 +10,7 @@ nav:
     - Quickstart: quickstart.md
     - FAQ: faq.md
     - Setup: 
-      - ML Database: setup/database.md
-      - ML Table: setup/table.md
+      - Dataset: setup/dataset.md
     - Operations:
       - Guide: operations/index.md
       - Create: operations/create.md

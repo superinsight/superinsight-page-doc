@@ -1,6 +1,6 @@
 # Semantic Search 
 
-Traditional database tables only allow users to search text and numbers using keyword matching or full text search. By default, machine learning database tables store text and image as embeddings, making it easy for users to perfrom semantic search with simple SQL statement.
+Traditional database tables only allow users to search text and numbers using keyword matching or full text search. By default, machine learning database tables store text and image as embeddings, making it easy for users to perform semantic search with simple SQL statement.
 
 !!! warning "Prerequisite"
 

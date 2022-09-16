@@ -10,7 +10,7 @@ VALUES (value1, value2, …);
 ```
 
 
-### Insert Single Row
+### Insert Multiple Rows
 ```
 INSERT INTO mldb.table_name (column_list)
 VALUES
