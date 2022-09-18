@@ -1,6 +1,6 @@
 Superinsight is a Machine Learning SQL Database, its main purpose is to provide machine learning features within the database so any applications and business intelligence software that utliize SQL can take advantage of AI capabilities.
 
-Traditional database are execellent at searching data types such as text and numbers, however there are no support for machine learning operations. Data is the most crucial part of machine learning, but because traditional databases do not support machine learning operations, data need to move outside the database for training, prediction and search, making machine learning programming far more complicated than it needs to be.
+Traditional database are excellent at searching data types such as text and numbers, however there are no support for machine learning operations. Data is the most crucial part of machine learning, but because traditional databases do not support machine learning operations, data need to move outside the database for training, prediction and search, making machine learning programming far more complicated than it needs to be.
 
 Previously, all the tools build for machine learning are made for AI researchers and data scientists, and not developers. We think the better approach to this problem is utilize the database as an abstraction layer for machine learning, and enable developers to build AI enabled applications at scale.
 
