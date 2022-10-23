@@ -364,9 +364,47 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Search
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Search
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-search-for-text" class="md-nav__link">
+    Semantic Search for Text
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-search-for-images" class="md-nav__link">
+    Semantic Search for Images
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -456,6 +494,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-search-for-text" class="md-nav__link">
+    Semantic Search for Text
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-search-for-images" class="md-nav__link">
+    Semantic Search for Images
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -474,6 +534,7 @@
 <p class="admonition-title">Prerequisite<p>If you like to enable semantic search for your columns, make sure the column is created using data type <code>TEXT</code></p>
 </p>
 </div>
+<h3 id="semantic-search-for-text">Semantic Search for Text</h3>
 <p>Semantic Search can be find information using the meaning of the words. For example, let's say you want to search for <code>ganster</code> movies, you can run the following query</p>
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
 FROM mldb.movie
@@ -510,6 +571,45 @@ ORDER BY predictions.score DESC
 <td>Fight Club</td>
 <td>An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.</td>
 <td>0.39</td>
+</tr>
+</tbody>
+</table>
+<h3 id="semantic-search-for-images">Semantic Search for Images</h3>
+<p>Semantic Search can be find similarity in images as well, let's say that you are are looking to find product using an image, you can run the following query.</p>
+<div class="highlight"><pre><span></span><code>SELECT mldb.product._id, mldb.product.name, mldb.product.image, predictions.score
+FROM mldb.product
+JOIN model.semantic_search
+ON model.semantic_search.inputs = mldb.product.image
+WHERE model.semantic_search.similar = &#39;http://img5a.flixcart.com/image/short/u/4/a/altht-3p-21-alisha-38-original-imaeh2d5vm5zbtgg.jpeg&#39;
+ORDER BY predictions.score DESC
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>_id</th>
+<th>name</th>
+<th>image</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Alisha Solid Women's Cycling Shorts</td>
+<td>http://img5a.flixcart.com/image/short/u/4/a/altht-3p-21-alisha-38-original-imaeh2d5vm5zbtgg.jpeg</td>
+<td>0.99</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Alisha Solid Women's Cycling Shorts</td>
+<td>http://img6a.flixcart.com/image/short/q/z/v/altht-3p-17-alisha-36-original-imaeh2d5njykvkz6.jpeg</td>
+<td>0.88</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Alisha Solid Women's Cycling Shorts</td>
+<td>http://img5a.flixcart.com/image/short/t/p/b/altht-3p-2-alisha-38-original-imaeh2d53jbrxnam.jpeg</td>
+<td>0.79</td>
 </tr>
 </tbody>
 </table>
