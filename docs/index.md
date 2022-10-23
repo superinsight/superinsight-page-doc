@@ -11,11 +11,7 @@ Traditional database tables only allow users to search text and numbers using ke
 
 
 ### 2. Model Prediction
-Machine learning database has build in ML models that allow users to make predictions by joining the models in a SQL query statement, similar to traditional database table. Common ML downstream tasks such as classification, summarization, text generation and translation are available by default for users to make predictions using SQL query inside the database.
+Machine learning database has build in ML models that allow users to make predictions by joining the models in a SQL query statement, similar to traditional database table. Common ML downstream tasks such as classification, recommendation, summarization, text generation and translation are available by default for users to make predictions using SQL query inside the database.
 
 ### 3. Model Training
 Machine learning database also provide the ability to train models from scratch or using a pretrained model with data in the database. Training models can also be perform using simple SQL statment.
-
-
-### 4. Federated Query 
-It is very common that the data you need for your ML operations are located at another data sources. Superinsight ML database also come with the Federated Query feature, which will allow you to query data from multiple data sources using one SQL statement. This will elimiate the need of building out a ETL pipeline, which takes a lot of time and the possiblity of data inconsistency.
