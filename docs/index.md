@@ -7,11 +7,11 @@ Previously, all the tools build for machine learning are made for AI researchers
 ## What does it do
 
 ### 1. Semantic Search
-Traditional database tables only allow users to search text and numbers using keyword matching or full text search. By default, machine learning database tables store text and image as embeddings, making it easy for users to perfrom semantic search with simple SQL statement.
+Traditional database tables only allow users to search text and numbers using keyword matching or full text search. By default, machine learning SQL database tables store text and image as embeddings, making it easy for users to perfrom semantic search with simple SQL statement.
 
 
 ### 2. Model Prediction
-Machine learning database has build in ML models that allow users to make predictions by joining the models in a SQL query statement, similar to traditional database table. Common ML downstream tasks such as classification, recommendation, summarization, text generation and translation are available by default for users to make predictions using SQL query inside the database.
+Machine learning SQL database has build in ML models that allow users to make predictions by joining the models in a SQL query statement, similar to traditional database table. Common ML downstream tasks such as classification, recommendation, summarization, text generation and translation are available by default for users to make predictions using SQL query inside the database.
 
 ### 3. Model Training
-Machine learning database also provide the ability to train models from scratch or using a pretrained model with data in the database. Training models can also be perform using simple SQL statment.
+Machine learning SQL database also provide the ability to train models from scratch or using a pretrained model with data in the database. Training models can also be perform using simple SQL statment.

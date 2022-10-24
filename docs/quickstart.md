@@ -1177,4 +1177,4 @@ ORDER BY predictions.score DESC
 
 As you can tell, semantic search allows us to search content in our data using the meaning of the word. Standard SQL queries are also supported so you can perform additional filtering using operators such as `=` and `LIKE`.
 
-If you like to learn more machine learning database operations, please continue our guide for [Predict Operations](/operations/predict/) 
+If you like to learn more machine learning SQL database operations, please continue our guide for [Predict Operations](/operations/predict/) 

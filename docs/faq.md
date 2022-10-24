@@ -1,9 +1,9 @@
 # FAQ
 Here are a list of frequently asked questions that are commonly asked
 
-??? quote "What a machine learning database?"
+??? quote "What a machine learning SQL database?"
 
-    Machine learning is a database that has machine learning features build-in to the database.
+    Machine learning SQL Database is a database that has machine learning features build-in to the database.
 		Common ML operations such as model training, predictions and semantic search are available inside the database.
 
 ??? quote "What is semantic search?"
