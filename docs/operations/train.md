@@ -2,6 +2,10 @@
 ## Train custom models
 To train your own custom model, you can choose a pretrained ML model as a based model, and finetuned it with your own data
 
+!!! warning "Prerequisite"
+    GPU is required for training custom models. This feature is currently only available in the distributed version.
+
+
 | Task            				| Description                                                         										| Model Name 										|
 | ----------------------- | -----------------------------------------------                       									| ----------------------------- |
 | Text Classification     | Use to assign label or class to text, labels such as sentiment or product category			| model.text_classification     | 
