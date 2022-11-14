@@ -16,7 +16,6 @@ nav:
       - Create: operations/create.md
       - Delete: operations/delete.md
       - Drop: operations/drop.md
-      - Federated Query: operations/federated.md
       - Insert: operations/insert.md
       - Search: operations/search.md
       - Predict: operations/predict.md
@@ -37,12 +36,6 @@ plugins:
       languages:
         en:
           name: English
-          build: true
-        zh_CN:
-          name: 中文 (中国)
-          build: true
-        zh_TW:
-          name: 中文 (台灣)
           build: true
 extra:
   generator: false

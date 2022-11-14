@@ -5,29 +5,34 @@ Finally you will be able to run a semantic search using SQL query. It's that sim
 If you don't have an account yet, sign up to [get early access](https://www.superinsight.ai/request-a-demo) here.
 
 
-## 1. Connect to your host
-After your account has been created, you will find a dedicated host on your Superinsight Cloud Studio.
-Using this host, you will be able to connect to your database
+## 1. Installation
+We have the standalone and cluster verison of Superinsight. To get started we recommend you use our standalone version in a non-production environment.
+When you are ready to move to a production environment, we recommend the distributed version which will give you much better scalability when runnin in kubernetes.
 
-=== "Superinsight Cloud Studio"
+=== "Standalone Version"
 
-    If you are using Superinsight Cloud Studio, your host should be already connected to your account. Simply login and click on SQL Editor to begin.
+    For the standalone version, you can run it using a simple docker command.
+	Don't forget to change the username and password.
+	```
+	docker run --name superinsight-db-standalone -p 5432:5432 -e SUPERINSIGHT_USER=admin -e SUPERINSIGHT_PASSWORD=password superinsight/superinsight-db-standalone:latest
+	```
 
-=== "Third Party Tools"
+=== "Distributed Version"
 
-    If you wish to connect to using third party tools, we recommend using DBeaver as your editor. You can use the postgresql connection.
-    ```
-    postgresql://{username}:{password}@{host}:{port}/{database}
-    ```
+    For the distributed version, please reach out to the our [Support Team](https://www.superinsight.ai/get-early-access)
 
-## 2. Create a database table
+## 2. Connect using a database client
+
+After you installation has been completed, you will need a database client to connect to your database on port 5432 via the Postgres Protocol. We recommend using [DBeaver](https://dbeaver.io) or [pgAdmin](https://www.pgadmin.org)
+
+## 3. Create a database table
 
 Database table can be created using the `CREATE TABLE` statement in superinsight. For the columns that you will like to enable semantic search, assign them with the data type `TEXT`.
 ```
 CREATE TABLE mldb.movie (
 	_id serial PRIMARY KEY,
 	title TEXT,
-  genre TEXT,
+	genre TEXT,
 	overview TEXT,
 	released_year varchar(100),
 	runtime varchar(100),
@@ -37,7 +42,7 @@ CREATE TABLE mldb.movie (
 );
 ```
 
-## 3. Insert data to database table 
+## 4. Insert data to database table 
 
 Rows can be inserted to the database using the `INSERT` statement in superinsight.
 
@@ -1154,7 +1159,7 @@ Rows can be inserted to the database using the `INSERT` statement in superinsigh
 
 
 
-## 4. Performing semantic search on ML table
+## 5. Performing semantic search on ML table
 
 ```
 SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
@@ -1173,7 +1178,7 @@ ORDER BY predictions.score DESC
 | 10     | Fight Club    | An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more. | 0.39      |
 
 
-## 5. Try More
+## 6. Try More
 
 As you can tell, semantic search allows us to search content in our data using the meaning of the word. Standard SQL queries are also supported so you can perform additional filtering using operators such as `=` and `LIKE`.
 

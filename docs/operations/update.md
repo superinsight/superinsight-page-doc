@@ -2,7 +2,7 @@
 
 Rows can be inserted to the database using the `UPDATE` statement in superinsight.
 
-### Insert Single Row
+### Update Single Row
 ```
 UPDATE mldb.table_name
 SET column1 = value1,

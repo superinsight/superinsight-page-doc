@@ -9,7 +9,6 @@ Superinsight is a machine learning database. It works like a traditional relatio
 | [Delete Rows](delete)             				| Delete rows into your table | 
 | [Drop Model](drop)       									| Drop database table or ML model | 
 | [Drop Table](drop)       									| Drop database table or ML model | 
-| [Federated Query](federated)							| Query data from external data sources | 
 | [Insert Rows](insert)             				| Insert command to insert rows in your table | 
 | [Predict](predict)             						| Perform ML prediction using select statement | 
 | [Search](search)             							| Perform semantic search in your table | 
