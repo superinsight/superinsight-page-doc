@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.superinsight.ai/quickstart/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -19,10 +19,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.08040f6c.min.css">
         
           
           
@@ -30,6 +30,7 @@
         
       
       
+
     
     
     
@@ -42,10 +43,11 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -56,7 +58,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="">
   
     
     
@@ -199,36 +201,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-connect-to-your-host" class="md-nav__link">
-    1. Connect to your host
+  <a href="#1-installation" class="md-nav__link">
+    1. Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-create-a-database-table" class="md-nav__link">
-    2. Create a database table
+  <a href="#2-connect-using-a-database-client" class="md-nav__link">
+    2. Connect using a database client
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-insert-data-to-database-table" class="md-nav__link">
-    3. Insert data to database table
+  <a href="#3-create-a-database-table" class="md-nav__link">
+    3. Create a database table
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-performing-semantic-search-on-ml-table" class="md-nav__link">
-    4. Performing semantic search on ML table
+  <a href="#4-insert-data-to-database-table" class="md-nav__link">
+    4. Insert data to database table
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-try-more" class="md-nav__link">
-    5. Try More
+  <a href="#5-performing-semantic-search-on-ml-table" class="md-nav__link">
+    5. Performing semantic search on ML table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-try-more" class="md-nav__link">
+    6. Try More
   </a>
   
 </li>
@@ -394,20 +403,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../operations/federated/" class="md-nav__link">
-        Federated Query
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../operations/insert/" class="md-nav__link">
         Insert
       </a>
@@ -520,36 +515,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-connect-to-your-host" class="md-nav__link">
-    1. Connect to your host
+  <a href="#1-installation" class="md-nav__link">
+    1. Installation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-create-a-database-table" class="md-nav__link">
-    2. Create a database table
+  <a href="#2-connect-using-a-database-client" class="md-nav__link">
+    2. Connect using a database client
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-insert-data-to-database-table" class="md-nav__link">
-    3. Insert data to database table
+  <a href="#3-create-a-database-table" class="md-nav__link">
+    3. Create a database table
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-performing-semantic-search-on-ml-table" class="md-nav__link">
-    4. Performing semantic search on ML table
+  <a href="#4-insert-data-to-database-table" class="md-nav__link">
+    4. Insert data to database table
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-try-more" class="md-nav__link">
-    5. Try More
+  <a href="#5-performing-semantic-search-on-ml-table" class="md-nav__link">
+    5. Performing semantic search on ML table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-try-more" class="md-nav__link">
+    6. Try More
   </a>
   
 </li>
@@ -562,10 +564,11 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
+                  
 
 
 <h1 id="quickstart">Quickstart</h1>
@@ -573,27 +576,30 @@
 You will learn how to create a database table and insert data into your table.
 Finally you will be able to run a semantic search using SQL query. It's that simple.
 If you don't have an account yet, sign up to <a href="https://www.superinsight.ai/request-a-demo">get early access</a> here.</p>
-<h2 id="1-connect-to-your-host">1. Connect to your host</h2>
-<p>After your account has been created, you will find a dedicated host on your Superinsight Cloud Studio.
-Using this host, you will be able to connect to your database</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Superinsight Cloud Studio</label><label for="__tabbed_1_2">Third Party Tools</label></div>
+<h2 id="1-installation">1. Installation</h2>
+<p>We have the standalone and cluster verison of Superinsight. To get started we recommend you use our standalone version in a non-production environment.
+When you are ready to move to a production environment, we recommend the distributed version which will give you much better scalability when runnin in kubernetes.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Standalone Version</label><label for="__tabbed_1_2">Distributed Version</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>If you are using Superinsight Cloud Studio, your host should be already connected to your account. Simply login and click on SQL Editor to begin.</p>
-</div>
-<div class="tabbed-block">
-<p>If you wish to connect to using third party tools, we recommend using DBeaver as your editor. You can use the postgresql connection.
-<div class="highlight"><pre><span></span><code>postgresql://{username}:{password}@{host}:{port}/{database}
+<p>For the standalone version, you can run it using a simple docker command.
+Don't forget to change the username and password.
+<div class="highlight"><pre><span></span><code>docker run --name superinsight-db-standalone -p 5432:5432 -e SUPERINSIGHT_USER=admin -e SUPERINSIGHT_PASSWORD=password superinsight/superinsight-db-standalone:latest
 </code></pre></div></p>
 </div>
+<div class="tabbed-block">
+<p>For the distributed version, please reach out to the our <a href="https://www.superinsight.ai/get-early-access">Support Team</a></p>
 </div>
 </div>
-<h2 id="2-create-a-database-table">2. Create a database table</h2>
+</div>
+<h2 id="2-connect-using-a-database-client">2. Connect using a database client</h2>
+<p>After you installation has been completed, you will need a database client to connect to your database on port 5432 via the Postgres Protocol. We recommend using <a href="https://dbeaver.io">DBeaver</a> or <a href="https://www.pgadmin.org">pgAdmin</a></p>
+<h2 id="3-create-a-database-table">3. Create a database table</h2>
 <p>Database table can be created using the <code>CREATE TABLE</code> statement in superinsight. For the columns that you will like to enable semantic search, assign them with the data type <code>TEXT</code>.
 <div class="highlight"><pre><span></span><code>CREATE TABLE mldb.movie (
     _id serial PRIMARY KEY,
     title TEXT,
-  genre TEXT,
+    genre TEXT,
     overview TEXT,
     released_year varchar(100),
     runtime varchar(100),
@@ -602,7 +608,7 @@ Using this host, you will be able to connect to your database</p>
     no_of_votes int4
 );
 </code></pre></div></p>
-<h2 id="3-insert-data-to-database-table">3. Insert data to database table</h2>
+<h2 id="4-insert-data-to-database-table">4. Insert data to database table</h2>
 <p>Rows can be inserted to the database using the <code>INSERT</code> statement in superinsight.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Small Batch Test</label><label for="__tabbed_2_2">Large Batch Test</label></div>
 <div class="tabbed-content">
@@ -1714,7 +1720,7 @@ INSERT INTO mldb.movie (title,genre,overview,released_year,runtime,imdb_rating,d
 </div>
 </div>
 </div>
-<h2 id="4-performing-semantic-search-on-ml-table">4. Performing semantic search on ML table</h2>
+<h2 id="5-performing-semantic-search-on-ml-table">5. Performing semantic search on ML table</h2>
 <div class="highlight"><pre><span></span><code>SELECT mldb.movie._id, mldb.movie.title, mldb.movie.overview, predictions.score
 FROM mldb.movie
 JOIN model.semantic_search
@@ -1753,14 +1759,19 @@ ORDER BY predictions.score DESC
 </tr>
 </tbody>
 </table>
-<h2 id="5-try-more">5. Try More</h2>
+<h2 id="6-try-more">6. Try More</h2>
 <p>As you can tell, semantic search allows us to search content in our data using the meaning of the word. Standard SQL queries are also supported so you can perform additional filtering using operators such as <code>=</code> and <code>LIKE</code>.</p>
-<p>If you like to learn more machine learning SQL database operations, please continue our guide for <a href="/operations/predict/">Predict Operations</a> </p>
+<p>If you like to learn more machine learning database operations, please continue our guide for <a href="/operations/predict/">Predict Operations</a> </p>
 
-              
-            </article>
-            
-          </div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -1818,10 +1829,11 @@ ORDER BY predictions.score DESC
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.0238f547.min.js"></script>
+      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
     
   </body>

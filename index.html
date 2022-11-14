@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.superinsight.ai/">
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.8">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
@@ -19,10 +19,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.cbb835fc.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.08040f6c.min.css">
         
           
           
@@ -30,6 +30,7 @@
         
       
       
+
     
     
     
@@ -42,10 +43,11 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -56,7 +58,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="">
   
     
     
@@ -389,20 +391,6 @@
   
   
     <li class="md-nav__item">
-      <a href="operations/federated/" class="md-nav__link">
-        Federated Query
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="operations/insert/" class="md-nav__link">
         Insert
       </a>
@@ -554,10 +542,11 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
+                  
 
 
   <h1>What is Superinsight</h1>
@@ -567,16 +556,21 @@
 <p>Previously, all the tools build for machine learning are made for AI researchers and data scientists, and not developers. We think the better approach to this problem is utilize the database as an abstraction layer for machine learning, and enable developers to build AI enabled applications at scale.</p>
 <h2 id="what-does-it-do">What does it do</h2>
 <h3 id="1-semantic-search">1. Semantic Search</h3>
-<p>Traditional database tables only allow users to search text and numbers using keyword matching or full text search. By default, machine learning SQL database tables store text and image as embeddings, making it easy for users to perfrom semantic search with simple SQL statement.</p>
+<p>Traditional database tables only allow users to search text and numbers using keyword matching or full text search. By default, machine learning database tables store text and image as embeddings, making it easy for users to perfrom semantic search with simple SQL statement.</p>
 <h3 id="2-model-prediction">2. Model Prediction</h3>
-<p>Machine learning SQL database has build in ML models that allow users to make predictions by joining the models in a SQL query statement, similar to traditional database table. Common ML downstream tasks such as classification, recommendation, summarization, text generation and translation are available by default for users to make predictions using SQL query inside the database.</p>
+<p>Machine learning database has build in ML models that allow users to make predictions by joining the models in a SQL query statement, similar to traditional database table. Common ML downstream tasks such as classification, recommendation, summarization, text generation and translation are available by default for users to make predictions using SQL query inside the database.</p>
 <h3 id="3-model-training">3. Model Training</h3>
-<p>Machine learning SQL database also provide the ability to train models from scratch or using a pretrained model with data in the database. Training models can also be perform using simple SQL statment.</p>
+<p>Machine learning database also provide the ability to train models from scratch or using a pretrained model with data in the database. Training models can also be perform using simple SQL statment.</p>
 
-              
-            </article>
-            
-          </div>
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -619,10 +613,11 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.0238f547.min.js"></script>
+      <script src="assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
     
   </body>
