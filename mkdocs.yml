@@ -39,3 +39,6 @@ plugins:
           build: true
 extra:
   generator: false
+  analytics:
+    provider: google
+    property: G-B69XP516VZ
