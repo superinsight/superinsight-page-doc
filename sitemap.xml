@@ -2,112 +2,112 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
          <loc>https://docs.superinsight.ai/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/faq/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/faq/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/quickstart/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/quickstart/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/create/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/create/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/delete/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/delete/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/drop/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/drop/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/federated/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/federated/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/insert/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/insert/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/predict/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/predict/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/search/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/search/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/train/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/train/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/operations/update/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/operations/update/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/setup/database/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/setup/database/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/setup/dataset/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/setup/dataset/"/>
          
     </url>
     <url>
          <loc>https://docs.superinsight.ai/setup/table/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-16</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="https://docs.superinsight.ai/en/setup/table/"/>
          
