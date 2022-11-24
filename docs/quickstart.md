@@ -14,16 +14,25 @@ When you are ready to move to a production environment, we recommend the distrib
     For the standalone version, you can run it using a simple docker command.
 	Don't forget to change the username and password.
 	```
-	docker run --name superinsight-db-standalone -p 5432:5432 -e SUPERINSIGHT_USER=admin -e SUPERINSIGHT_PASSWORD=password superinsight/superinsight-db-standalone:latest
+	docker run \
+	--name superinsight-db-standalone \
+	-p 5432:5432 \
+	-e SUPERINSIGHT_USER=admin \
+	-e SUPERINSIGHT_PASSWORD=password \
+	superinsight/superinsight-db-standalone:latest
 	```
 
 === "Distributed Version"
 
-    For the distributed version, please reach out to the our [Support Team](https://www.superinsight.ai/get-early-access)
+    For the distributed version, please reach out to the our [Support Team](https://www.superinsight.ai/request-demo)
 
 ## 2. Connect using a database client
 
-After you installation has been completed, you will need a database client to connect to your database on port 5432 via the Postgres Protocol. We recommend using [DBeaver](https://dbeaver.io) or [pgAdmin](https://www.pgadmin.org)
+Once the docker container is running, you can connect to Superinsight using the PostgreSQL protocol and the default database Superinsight on Port 5432.
+```
+postgres://admin:password@127.0.0.1:5432/superinsight
+```
+For access using a data client tool, we recommend using [DBeaver](https://dbeaver.io).
 
 ## 3. Create a database table
 
